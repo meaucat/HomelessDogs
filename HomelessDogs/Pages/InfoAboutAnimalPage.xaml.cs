@@ -16,22 +16,13 @@ using System.Windows.Shapes;
 namespace HomelessDogs.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainGuestPage.xaml
+    /// Логика взаимодействия для InfoAboutAnimalPage.xaml
     /// </summary>
-    public partial class MainGuestPage : Page
+    public partial class InfoAboutAnimalPage : Page
     {
-        public MainGuestPage()
+        public InfoAboutAnimalPage()
         {
             InitializeComponent();
-        }
-        private void BackBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AuthorizationPage());
-        }
-
-        private void AllAnimalsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
         }
     }
 }

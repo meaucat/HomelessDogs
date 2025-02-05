@@ -18,8 +18,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Date, Time" FontSize="32" FontWeight="SemiBold" />
-                <TextBlock Text="Status" FontSize="32" FontWeight="SemiBold" Foreground="#2DA700" Margin="30 0 0 0"/>
+                <TextBlock Text="Date, Time" FontSize="32" FontWeight="SemiBold" Name="DateTimeTbB"/>
+                <TextBlock Text="Status" Name="StatusTB" FontSize="32" FontWeight="SemiBold" Foreground="#2DA700" Margin="30 0 0 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 30 0 0">
@@ -27,21 +27,24 @@
                 <TextBlock FontSize="14">Пациент</TextBlock>
                 <TextBlock Text="Name"
                            FontSize="24"
-                           FontWeight="SemiBold"></TextBlock>
+                           FontWeight="SemiBold"
+                           Name="PacientTB"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Margin="30 0 0 0">
                     <TextBlock FontSize="14">Порода</TextBlock>
                     <TextBlock Text="Type"
                            FontSize="24"
-                           FontWeight="SemiBold"></TextBlock>
+                           FontWeight="SemiBold"
+                           Name="TypeTB"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Margin="30 0 0 0">
                     <TextBlock FontSize="14">Лечащий врач</TextBlock>
                     <TextBlock Text="Doctor"
                            FontSize="24"
-                           FontWeight="SemiBold"></TextBlock>
+                           FontWeight="SemiBold"
+                           Name="DoctorTB"></TextBlock>
                 </StackPanel>
 
             </StackPanel>
@@ -49,7 +52,8 @@
                 <TextBlock FontSize="14">Диагноз</TextBlock>
                 <TextBlock Text="Diagnosis"
                            FontSize="24"
-                           FontWeight="SemiBold"></TextBlock>
+                           FontWeight="SemiBold"
+                           Name="DiagnosisTB"></TextBlock>
             </StackPanel>
 
             <TextBlock Margin="0 20 0 0"

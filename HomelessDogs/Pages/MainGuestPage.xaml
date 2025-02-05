@@ -5,10 +5,93 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HomelessDogs.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1047" d:DesignWidth="1047"
       Title="MainGuestPage">
 
     <Grid>
-        
+        <Image Source="/Images/GuestPage.png"
+               Width="639"
+               Height="639"
+               Margin="400 0 0 400"></Image>
+        <Button x:Name="BackBTN" Height="48" Width="243" Content="Выйти из гостевого режима" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
+
+
+        <StackPanel Orientation="Vertical"
+                    Margin="50 50 50 0">
+            <TextBlock FontSize="48"
+                       Margin="0 0 0 20"
+                       FontWeight="DemiBold"><Run Text="Здравств"/><Run Language="ru-ru" Text="у"/><Run Text="йте!"/></TextBlock>
+            <TextBlock FontSize="18">Бездомные собаки нуждаются в хозяине!</TextBlock>
+            <TextBlock FontSize="18">Заберите себе одну или две собачки и станьте</TextBlock>
+            <TextBlock FontSize="18">уже наконец счастливым!</TextBlock>
+
+            <TextBlock FontSize="32"
+                       Margin="0 20 0 0"
+                       FontWeight="DemiBold">Собаки в приюте:</TextBlock>
+            
+            <ListView
+    x:Name="AllAnimalsLV"
+      Height="750" d:ItemsSource="{d:SampleData ItemCount=5}"
+      BorderBrush="Transparent"
+      Background="Transparent"
+      VerticalAlignment="Top" SelectionChanged="AllAnimalsLV_SelectionChanged" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2"></UniformGrid>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel Background="#F7F7F7"
+                    Width="420"
+                    Height="220"
+                    Margin="0 10 0 0"
+                    Orientation="Vertical">
+
+
+                            <StackPanel Orientation="Horizontal"
+                        Margin="20 10 0 0">
+                                <TextBlock Text="{Binding Name}"
+                       FontSize="32"
+                       FontWeight="DemiBold"></TextBlock>
+                                
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 10 0 0">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>Место проживания</TextBlock>
+                                    <TextBlock Text="{Binding PointLive}"
+                               FontSize="24"
+                               FontWeight="SemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical"
+                            Margin="90 0 0 0">
+                                    <TextBlock>Порода</TextBlock>
+                                    <TextBlock Text="{Binding Type}"
+                               FontSize="24"
+                               FontWeight="SemiBold"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 30 0 0">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>Возраст</TextBlock>
+                                    <TextBlock Text="{Binding Age}"
+                               FontSize="24"
+                               FontWeight="SemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical"
+                            Margin="155 0 0 0">
+                                    <TextBlock>Статус</TextBlock>
+                                    <TextBlock Text="{Binding Status}"
+                               FontSize="24"
+                               FontWeight="SemiBold" Foreground="#2DA700"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
