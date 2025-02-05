@@ -1,0 +1,88 @@
+﻿<Page x:Class="HomelessDogs.Pages.VisitsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HomelessDogs.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1047" d:DesignWidth="1047"
+      Title="VisitsPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="50 50 0 0">
+            <TextBlock Text="Страница приема" FontSize="48" FontWeight="SemiBold"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
+                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
+                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Редактировать информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="EditInformationBTN_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Date, Time" FontSize="32" FontWeight="SemiBold" />
+                <TextBlock Text="Status" FontSize="32" FontWeight="SemiBold" Foreground="#2DA700" Margin="30 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 30 0 0">
+                <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="14">Пациент</TextBlock>
+                <TextBlock Text="Name"
+                           FontSize="24"
+                           FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="30 0 0 0">
+                    <TextBlock FontSize="14">Порода</TextBlock>
+                    <TextBlock Text="Type"
+                           FontSize="24"
+                           FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="30 0 0 0">
+                    <TextBlock FontSize="14">Лечащий врач</TextBlock>
+                    <TextBlock Text="Doctor"
+                           FontSize="24"
+                           FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0 20 0 0">
+                <TextBlock FontSize="14">Диагноз</TextBlock>
+                <TextBlock Text="Diagnosis"
+                           FontSize="24"
+                           FontWeight="SemiBold"></TextBlock>
+            </StackPanel>
+
+            <TextBlock Margin="0 20 0 0"
+                       FontSize="32"
+                       FontWeight="DemiBold">Комментарии врача</TextBlock>
+
+            <ListView Width="700"
+                      Height="520"
+                      Name="CommentsLV"
+                      Margin="0 20 0 0"
+                      BorderBrush="Transparent"
+                      HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=15}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding FirstName}" Foreground="#FF939393"></TextBlock>
+                                <TextBlock Text="{Binding LastName}" Margin="10 0 0 0" Foreground="#FF939393"></TextBlock>
+                                <TextBlock Text=", " Foreground="#FF939393"></TextBlock>
+                                <TextBlock Text="{Binding Role}" Foreground="#FF939393"></TextBlock>
+                                <TextBlock Text="{Binding Date}" Foreground="#FF939393" Margin="20 0 0 0"></TextBlock>
+                                <TextBlock Text="{Binding Time}" Foreground="#FF939393" Margin="5 0 0 0"></TextBlock>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Comment}"
+                                       FontSize="16"
+                                       Margin="0 10 0 20"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,28 @@
+﻿<Page x:Class="HomelessDogs.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HomelessDogs.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1047" d:DesignWidth="1047"
+      Title="AuthorizationPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/AuthorizationImage.png"/>
+        </Grid.Background>
+        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="432" Height="380" Margin="0 150 0 0" >
+            <TextBlock Text="Авторизация" Foreground="White" FontSize="32" Margin="35 35 0 0"/>
+            <TextBox x:Name="LoginTB" Style="{StaticResource PlaceholderTextBoxStyle}" Tag="Логин" Height="56" Width="368" Margin="0 20 0 0 " FontSize="18" VerticalContentAlignment="Center" Padding="10 0 0 0"/>
+            <PasswordBox x:Name="PasswordPB" Height="56" Width="368" Padding="20 0 0 0" Margin="0 20 0 0 " FontSize="18" VerticalContentAlignment="Center" />
+            <Button x:Name="LoginBtn" Width="368" Height="65" Margin="0 20 0 0" Content="Войти в аккаунт" Foreground="White" FontSize="24" Background="#FFF24822" Click="LoginBtn_Click"/>
+            
+        </StackPanel>
+        <Button x:Name="GuestBtn" Width="432" Height="65" Margin="0 650 0 0" Content="Гостевой доступ" Foreground="White" FontSize="24" Background="#FF454545"/>
+
+
+
+    </Grid>
+</Page>
