@@ -25,10 +25,10 @@
             <StackPanel Orientation="Horizontal" Margin="0 30 0 0">
                 <StackPanel Orientation="Vertical">
                 <TextBlock FontSize="14">Пациент</TextBlock>
-                <TextBlock Text="Name"
+                    <TextBlock Text="Name"
                            FontSize="24"
                            FontWeight="SemiBold"
-                           Name="PacientTB"></TextBlock>
+                           Name="PacientTB"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Margin="30 0 0 0">

@@ -71,11 +71,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AviaryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditPetsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EditVisitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\InfoAboutAnimalPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainAdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,11 +108,20 @@
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AviaryPage.xaml.cs">
+      <DependentUpon>AviaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditPetsPage.xaml.cs">
+      <DependentUpon>EditPetsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditVisitPage.xaml.cs">
       <DependentUpon>EditVisitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InfoAboutAnimalPage.xaml.cs">
       <DependentUpon>InfoAboutAnimalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainAdminPage.xaml.cs">
+      <DependentUpon>MainAdminPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainGuestPage.xaml.cs">
       <DependentUpon>MainGuestPage.xaml</DependentUpon>
@@ -147,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\GuestPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AdminPicture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

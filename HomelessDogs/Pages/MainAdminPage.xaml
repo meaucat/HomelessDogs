@@ -1,0 +1,35 @@
+﻿<Page x:Class="HomelessDogs.Pages.MainAdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HomelessDogs.Pages"
+      mc:Ignorable="d" 
+     d:DesignHeight="1047" d:DesignWidth="1047"
+      Title="MainAdminPage">
+
+    <Grid>
+        <Image Source="/Images/AdminPicture.png" Margin="177,232,-83,0"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50 50 0 0">
+            
+            <TextBlock Text="Вход выполнен, " FontSize="48" FontWeight="Bold"/>
+            <TextBlock x:Name="AdminNameTB" Text="admin" FontSize="48" FontWeight="Bold" Foreground="Red"/>
+
+
+            <TextBlock x:Name="LastOperationTB" Text="За последнее время было проведено 27 операций." FontSize="18" Margin="0 20 0 0" />
+               
+
+            <StackPanel Orientation="Vertical" Margin="0 20 0 0" HorizontalAlignment="Left" >
+                <Button x:Name="EmployeesBTN" Height="48" Width="350" Content="Просмотреть список сотрудников" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent" HorizontalAlignment="Left"  />
+                <Button x:Name="PetsBTN" Height="48" Width="350" Content="Просмотреть список питомцев" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent"  HorizontalAlignment="Left" Click="PetsBTN_Click" />
+                <Button x:Name="HistoryOperationBTN" Height="48" Width="350" Content="Просмотреть историю операций" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent" HorizontalAlignment="Left" Click="HistoryOperationBTN_Click" />
+                <Button x:Name="VolyeriBTN" Height="48" Width="350" Content="Вольеры в приюте" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent"  HorizontalAlignment="Left" Click="VolyeriBTN_Click" />
+                </StackPanel>
+
+        </StackPanel>
+
+            <Button x:Name="BackBTN" Height="48" Width="223" Content="Выйти из аккаунта" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
+
+        
+    </Grid>
+</Page>
