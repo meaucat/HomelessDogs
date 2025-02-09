@@ -23,6 +23,8 @@ namespace HomelessDogs.Pages
         public VeterinarMainPage()
         {
             InitializeComponent();
+
+            NameVeterinarsTB.Text = App.employee.VetText;
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

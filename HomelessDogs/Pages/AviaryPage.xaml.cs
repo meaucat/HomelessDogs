@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,19 +21,65 @@ namespace HomelessDogs.Pages
     /// </summary>
     public partial class AviaryPage : Page
     {
+        public static List<Aviary> aviaries = new List<Aviary>();
         public AviaryPage()
         {
             InitializeComponent();
-        }
 
-        private void BackBTN_Click(object sender, RoutedEventArgs e)
-        {
-
+            AviaryTypeCb.ItemsSource = App.db.AviaryType.ToList();
+            aviaries = App.db.Aviary.ToList();
+            AllAviariesLV.ItemsSource = aviaries;
         }
 
         private void AllAnimalsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
+        private void ClearBTN_Click(object sender, RoutedEventArgs e)
+        {
+            AviaryTypeCb.SelectedItem = null;
+        }
+
+        private void AddAviaryBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (AviaryTypeCb.SelectedItem == null)
+            {
+                MessageBox.Show("Необходимо выбрать тип вольера.");
+            }
+            else
+            {
+                Aviary aviary = new Aviary()
+                {
+                    Id_aviary_type = (AviaryTypeCb.SelectedItem as AviaryType).Id_aviary_type,
+                };
+
+                App.db.Aviary.Add(aviary);
+                App.db.SaveChanges();
+
+                aviaries = App.db.Aviary.ToList();
+                AllAviariesLV.ItemsSource = aviaries;
+
+                MessageBox.Show("Вольер успешно добавлен.");
+            }
+        }
+        
+        private void EditAviaryBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (AllAviariesLV.SelectedItem ==  null)
+            {
+                MessageBox.Show("Необходимо выбрать вольер для изменения.");
+            }
+            else
+            {
+                App.selectedAviary = AllAviariesLV.SelectedItem as Aviary;
+                //Переход на окно или страницу
+            }
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainAdminPage());
+        }        
     }
 }

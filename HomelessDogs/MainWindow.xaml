@@ -9,6 +9,6 @@
         mc:Ignorable="d"
         Title="PIC-ME DOGS" MaxHeight="1047" MinHeight="1047" MaxWidth="1047" MinWidth="1047">
     <Grid>
-        <Frame Source="/Pages/AuthorizationPage.xaml"/>
+        <Frame Source="/Pages/AuthorizationPage.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -23,22 +23,28 @@ namespace HomelessDogs.Pages
         public MainAdminPage()
         {
             InitializeComponent();
+            AdminNameTB.Text = App.employee.AdminText;
+        }
+        private void EmployeesBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PetsBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void HistoryOperationBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new VeterinarMainPage());
+
         }
 
         private void VolyeriBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AviaryPage());
         }
-
-        private void PetsBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new MainGuestPage());
-        }
+        
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {

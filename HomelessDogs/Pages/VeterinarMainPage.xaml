@@ -20,8 +20,8 @@
             </Grid.RowDefinitions>
             <Image Source="/Images/PIC-ME.png" Margin="698,0,-10,740"/>
             <StackPanel Orientation="Vertical" Height="250" Width="700" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50 50 0 0">
-                <TextBlock Text="Приветствуем, " FontSize="48" FontWeight="Bold"/>
-                <TextBlock x:Name="NameVeterinarsTB" Text="(ФИО ВЕТЕРИНАРА) " FontSize="48" FontWeight="Bold" Foreground="Red"/>
+                <TextBlock Text="Приветствуем," FontSize="48" FontWeight="Bold"/>
+                <TextBlock x:Name="NameVeterinarsTB" FontSize="48" FontWeight="Bold" Foreground="Red"/>
 
                 <TextBlock Text="Сегодня вам предстоить провести 4 приема, хорошего Вам дня!" FontSize="18" Margin="0 20 0 0" />
                 <TextBlock  FontSize="32" FontWeight="SemiBold" Margin="0 30 0 0">Предстоящие приемы:</TextBlock>

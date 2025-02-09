@@ -9,17 +9,15 @@
       Title="AviaryPage">
 
     <Grid>
-            <Button x:Name="BackBTN" Height="48" Width="243" Content="НАЗАД НАХУЙ" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
-
-
-    <StackPanel Orientation="Vertical"
+        
+        <StackPanel Orientation="Vertical"
                 Margin="50 50 50 0">
             <TextBlock FontSize="48"
                    Margin="0 0 0 20"
                    FontWeight="DemiBold" Text="Вольеры в приюте:"></TextBlock>
 
             <ListView
-x:Name="AllAnimalsLV"
+x:Name="AllAviariesLV"
   Height="470" d:ItemsSource="{d:SampleData ItemCount=5}"
   BorderBrush="Transparent"
   Background="Transparent"
@@ -41,7 +39,7 @@ x:Name="AllAnimalsLV"
 
                         <StackPanel Orientation="Horizontal"
                     Margin="20 10 0 0">
-                            <TextBlock Text="{Binding ID}"
+                            <TextBlock Text="{Binding Id_aviary, StringFormat='Вольер №{0}'}"
                    FontSize="32"
                    FontWeight="DemiBold"></TextBlock>
                             
@@ -49,7 +47,7 @@ x:Name="AllAnimalsLV"
                         <StackPanel Orientation="Horizontal" Margin="20 10 0 0">
                             <StackPanel Orientation="Vertical">
                                     <TextBlock>Тип</TextBlock>
-                                <TextBlock Text="{Binding Type}"
+                                <TextBlock Text="{Binding AviaryType.Name}"
                            FontSize="24"
                            FontWeight="SemiBold"></TextBlock>
                             </StackPanel>
@@ -68,12 +66,13 @@ x:Name="AllAnimalsLV"
             </ListView.ItemTemplate>
         </ListView>
 
-            <ComboBox Width="440" Height="60" HorizontalAlignment="Left" Margin="0 50 0 0"/>
-            <Button Content="Добавить вольер" Height="60" Width="440" FontSize="25" HorizontalAlignment="Left" Margin="0 50 0 0" BorderBrush="Transparent"/>
-            <Button Content="Редактировать" Height="60" Width="440" FontSize="25" HorizontalAlignment="Left" Margin="0 20 0 0" BorderBrush="Transparent"/>
+            <ComboBox x:Name="AviaryTypeCb" DisplayMemberPath="Name" Width="440" Height="60" FontSize="25" HorizontalAlignment="Left" Margin="0 50 0 0"/>
+            <Button x:Name="ClearBTN" Content="Очистить выбор" Height="60" Width="440" FontSize="25" HorizontalAlignment="Left" Margin="0 50 0 0" BorderBrush="Transparent" Click="ClearBTN_Click"/>
+            <Button x:Name="AddAviaryBTN" Content="Добавить вольер" Height="60" Width="440" FontSize="25" HorizontalAlignment="Left" Margin="0 20" BorderBrush="Transparent" Click="AddAviaryBTN_Click"/>
+            <Button x:Name="EditAviaryBTN" Content="Редактировать" Height="60" Width="440" FontSize="25" HorizontalAlignment="Left" BorderBrush="Transparent" Click="EditAviaryBTN_Click"/>
         </StackPanel>
 
-
+        <Button x:Name="BackBTN" Height="48" Width="243" Content="НАЗАД НАХУЙ" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
 
     </Grid>
 </Page>
