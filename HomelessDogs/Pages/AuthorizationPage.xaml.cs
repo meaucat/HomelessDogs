@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace HomelessDogs.Pages
     /// </summary>
     public partial class AuthorizationPage : Page
     {
+        public static List<Employee> employees = new List<Employee>();
         public AuthorizationPage()
         {
             InitializeComponent();
@@ -27,7 +29,33 @@ namespace HomelessDogs.Pages
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new VeterinarMainPage());
+            string login = LoginTB.Text.Trim();
+            string password = PasswordPB.Password.Trim();
+
+            employees = App.db.Employee.ToList();
+            App.employee = employees.FirstOrDefault(x => x.Login == login && x.Password == password);
+
+            if (App.employee != null && App.employee.Id_post == 1)
+            {
+                MessageBox.Show(App.employee.FullNameAuth);
+                NavigationService.Navigate(new MainAdminPage());
+            }
+            else if (App.employee != null && App.employee.Id_post == 2)
+            {
+                MessageBox.Show(App.employee.FullNameAuth);
+                NavigationService.Navigate(new VeterinarMainPage());
+            }
+            else
+            {
+                MessageBox.Show("Повторите попытку.");
+                LoginTB.Text = string.Empty;
+                PasswordPB.Password = string.Empty;
+            }
+        }
+
+        private void GuestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainGuestPage());
         }
     }
 }

@@ -39,5 +39,10 @@ namespace HomelessDogs.Pages
         {
             NavigationService.Navigate(new MainGuestPage());
         }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorizationPage());
+        }
     }
 }

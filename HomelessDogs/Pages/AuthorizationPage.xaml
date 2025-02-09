@@ -20,9 +20,7 @@
             <Button x:Name="LoginBtn" Width="368" Height="65" Margin="0 20 0 0" Content="Войти в аккаунт" Foreground="White" FontSize="24" Background="#FFF24822" BorderThickness="0" Click="LoginBtn_Click"/>
             
         </StackPanel>
-        <Button x:Name="GuestBtn" Width="432" Height="65" Margin="0 650 0 0" Content="Гостевой доступ" Foreground="White"  BorderThickness="0" FontSize="24" Background="#FF454545"/>
-
-
+        <Button x:Name="GuestBtn" Width="432" Height="65" Margin="0 650 0 0" Content="Гостевой доступ" Foreground="White"  BorderThickness="0" FontSize="24" Background="#FF454545" Click="GuestBtn_Click"/>
 
     </Grid>
 </Page>

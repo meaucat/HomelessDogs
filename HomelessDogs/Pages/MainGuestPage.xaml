@@ -13,7 +13,7 @@
                Width="639"
                Height="639"
                Margin="400 0 0 400"></Image>
-        <Button x:Name="BackBTN" Height="48" Width="243" Content="Выйти из гостевого режима" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
+        
 
 
         <StackPanel Orientation="Vertical"
@@ -93,5 +93,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
+
+        <Button x:Name="BackBTN" Height="48" Width="243" Content="Выйти из гостевого режима" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click"/>
     </Grid>
 </Page>

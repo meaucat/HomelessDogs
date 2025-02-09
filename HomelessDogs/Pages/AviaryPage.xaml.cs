@@ -24,5 +24,15 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
         }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AllAnimalsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

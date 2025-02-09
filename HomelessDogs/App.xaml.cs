@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,7 @@ namespace HomelessDogs
     /// </summary>
     public partial class App : Application
     {
+        public static HomelessDogsEntities db = new HomelessDogsEntities();
+        public static Employee employee;
     }
 }
