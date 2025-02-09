@@ -17,5 +17,6 @@ namespace HomelessDogs
         public static HomelessDogsEntities db = new HomelessDogsEntities();
         public static Employee employee;
         public static Aviary selectedAviary {  get; set; }
+        public static Dog selectedDog { get; set; }
     }
 }

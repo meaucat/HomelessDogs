@@ -22,6 +22,7 @@ namespace HomelessDogs.Models
         public Nullable<System.DateTime> Date { get; set; }
         public string Comment { get; set; }
     
+        public virtual Dog Dog { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Status Status { get; set; }
     }

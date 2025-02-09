@@ -14,8 +14,8 @@
             <TextBlock Text="Страница питомца" FontSize="48" FontWeight="SemiBold"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
-                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
-                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Позвонить в приют" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                <Button x:Name="CallBTN" Height="48" Width="300" Content="Позвонить в приют" FontSize="16" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться назад" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -24,23 +24,22 @@
                 
                     <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="32" FontWeight="DemiBold">Феликсия</TextBlock>
+                        <TextBlock x:Name="SerialNumberTB" FontSize="32" FontWeight="DemiBold"></TextBlock>
                     <TextBlock FontSize="32" Foreground="#2DA700" FontWeight="DemiBold" Margin="30 0 0 0">Ищет хозяина</TextBlock>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
                         <StackPanel Orientation="Vertical" >
                             <TextBlock FontSize="14" Foreground="#939393">Место проживания</TextBlock>
-                            <TextBlock Text="4 вольер"
+                            <TextBlock 
                                        FontSize="24"
                                        FontWeight="SemiBold"
-                                       Name="PointLifeTB"
-                                       />   
+                                       Name="PointLifeTB"/>   
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Порода</TextBlock>
-                            <TextBlock Text="Доберман"
+                            <TextBlock 
                                        FontSize="24"
                                        FontWeight="SemiBold"
                                        Name="TypeTB"/>   
@@ -48,7 +47,7 @@
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Возраст</TextBlock>
-                            <TextBlock Text="2 года"
+                            <TextBlock 
                                        FontSize="24"
                                        FontWeight="SemiBold"
                                        Name="AgeTB"/>
@@ -59,7 +58,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
                         <StackPanel Orientation="Vertical" >
                             <TextBlock FontSize="14" Foreground="#939393">Рост</TextBlock>
-                            <TextBlock Text="120 см"
+                            <TextBlock 
                                        FontSize="24"
                                        FontWeight="SemiBold"
                                        Name="HeightTB"
@@ -68,7 +67,7 @@
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Вес</TextBlock>
-                            <TextBlock Text="20 кг"
+                            <TextBlock 
                                        FontSize="24"
                                        FontWeight="SemiBold"
                                        Name="WeightTB"/>        
@@ -76,7 +75,7 @@
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Пол</TextBlock>
-                            <TextBlock Text="Муж"
+                            <TextBlock 
                                        FontSize="24"
                                        FontWeight="SemiBold"
                                        Name="GenderTB"/>    
@@ -88,14 +87,7 @@
             </StackPanel>
 
                 <TextBlock Text="Описание питомца" FontWeight="DemiBold" FontSize="32" Margin="0 40 0 0"/>
-            <TextBlock x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="0 25 0 0" FontSize="16"  Width="653" TextWrapping="WrapWithOverflow" Text="Познакомьтесь с Феликсией — нашей удивительной доберманшей, которая ищет свой навсегда дом!
-                           Эта прекрасная собака обладает не только впечатляющей внешностью, но и добрым, ласковым характером.
-                           Феликсия — настоящая дружелюбная душа, которая всегда рада новым знакомствам и с удовольствием делит свою любовь с окружающими.
-                           Она обожает гулять на свежем воздухе и исследовать мир вокруг, но в то же время прекрасно чувствует себя в компании людей и других животных.
-                           Феликсия умна и легко обучается, что делает её отличным компаньоном для активных семей или одиночек, готовых подарить ей заботу и внимание.
-                           Эта собака станет верным другом и защитником, готовым поддержать вас в любой ситуации.
-                           Её преданность и искренность не оставят равнодушными никого! Если вы ищете верного спутника, который наполнит ваш дом радостью и теплом, Феликсия — идеальный выбор.
-                           Приезжайте познакомиться с ней — возможно, именно она станет частью вашей семьи!" />
+            <TextBlock x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="0 25 0 0" FontSize="16"  Width="653" TextWrapping="WrapWithOverflow"/>
             
         </StackPanel>
     </Grid>

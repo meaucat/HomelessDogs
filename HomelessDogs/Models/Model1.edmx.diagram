@@ -5,21 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ae55d08c35d44d988c63608b45b1ba05" Name="Diagram1">
-        <EntityTypeShape EntityType="HomelessDogsModel.Aviary" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.AviaryType" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.Dog" Width="1.5" PointX="10.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.Gender" Width="1.5" PointX="8" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.Post" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.Status" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.Survey" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomelessDogsModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <AssociationConnector Association="HomelessDogsModel.FK_Aviary_AviaryType" ManuallyRouted="false" />
-        <AssociationConnector Association="HomelessDogsModel.FK_Dog_Aviary" ManuallyRouted="false" />
-        <AssociationConnector Association="HomelessDogsModel.FK_Dog_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="HomelessDogsModel.FK_Employee_Post" ManuallyRouted="false" />
-        <AssociationConnector Association="HomelessDogsModel.FK_Survey_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="HomelessDogsModel.FK_Survey_Status" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Aviary" Width="1.5" PointX="3" PointY="2.125" />
+        <EntityTypeShape EntityType="HomelessDogsModel.AviaryType" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Dog" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Employee" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Gender" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Post" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Status" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="HomelessDogsModel.Survey" Width="1.5" PointX="7.5" PointY="1.5" />
+        <EntityTypeShape EntityType="HomelessDogsModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Aviary_AviaryType" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Dog_Aviary" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Dog_Gender" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Survey_Dog" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Employee_Post" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Survey_Employee" />
+        <AssociationConnector Association="HomelessDogsModel.FK_Survey_Status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

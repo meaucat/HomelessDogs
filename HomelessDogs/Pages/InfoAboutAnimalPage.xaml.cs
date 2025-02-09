@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace HomelessDogs.Pages
         public InfoAboutAnimalPage()
         {
             InitializeComponent();
+
+            SerialNumberTB.Text = App.selectedDog.SerialNumber;
+            PointLifeTB.Text = $"Вольер №{App.selectedDog.Id_aviary}";
+            TypeTB.Text = App.selectedDog.SerialNumber;
+            AgeTB.Text = App.selectedDog.AgeText;
+            HeightTB.Text = $"{App.selectedDog.Height}см.";
+            WeightTB.Text = $"{App.selectedDog.Weight}кг.";
+            GenderTB.Text = (App.selectedDog.Gender as Gender).Name;
+            DescriptionTB.Text = App.selectedDog.Description;
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainGuestPage());
         }
     }
 }

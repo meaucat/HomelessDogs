@@ -14,6 +14,12 @@ namespace HomelessDogs.Models
     
     public partial class Dog
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Dog()
+        {
+            this.Survey = new HashSet<Survey>();
+        }
+    
         public int Id_dog { get; set; }
         public Nullable<int> Id_aviary { get; set; }
         public Nullable<int> Id_gender { get; set; }
@@ -29,5 +35,7 @@ namespace HomelessDogs.Models
     
         public virtual Aviary Aviary { get; set; }
         public virtual Gender Gender { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Survey> Survey { get; set; }
     }
 }

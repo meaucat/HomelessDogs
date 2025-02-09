@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище HomelessDogsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище HomelessDogsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Aviary">
           <Key>
             <PropertyRef Name="Id_aviary" />
@@ -139,6 +139,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Survey_Dog">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id_dog" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Survey_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
@@ -189,6 +201,10 @@
             <End Role="Post" EntitySet="Post" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="FK_Survey_Dog" Association="Self.FK_Survey_Dog">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
           <AssociationSet Name="FK_Survey_Employee" Association="Self.FK_Survey_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Survey" EntitySet="Survey" />
@@ -198,19 +214,57 @@
             <End Role="Survey" EntitySet="Survey" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HomelessDogsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HomelessDogsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aviary" EntityType="HomelessDogsModel.Aviary" />
+          <EntitySet Name="AviaryType" EntityType="HomelessDogsModel.AviaryType" />
+          <EntitySet Name="Dog" EntityType="HomelessDogsModel.Dog" />
+          <EntitySet Name="Employee" EntityType="HomelessDogsModel.Employee" />
+          <EntitySet Name="Gender" EntityType="HomelessDogsModel.Gender" />
+          <EntitySet Name="Post" EntityType="HomelessDogsModel.Post" />
+          <EntitySet Name="Status" EntityType="HomelessDogsModel.Status" />
+          <EntitySet Name="Survey" EntityType="HomelessDogsModel.Survey" />
+          <EntitySet Name="sysdiagrams" EntityType="HomelessDogsModel.sysdiagrams" />
+          <AssociationSet Name="FK_Aviary_AviaryType" Association="HomelessDogsModel.FK_Aviary_AviaryType">
+            <End Role="AviaryType" EntitySet="AviaryType" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Aviary" Association="HomelessDogsModel.FK_Dog_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Gender" Association="HomelessDogsModel.FK_Dog_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Dog" Association="HomelessDogsModel.FK_Survey_Dog">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Post" Association="HomelessDogsModel.FK_Employee_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Employee" Association="HomelessDogsModel.FK_Survey_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Status" Association="HomelessDogsModel.FK_Survey_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Aviary">
           <Key>
             <PropertyRef Name="Id_aviary" />
           </Key>
           <Property Name="Id_aviary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_aviary_type" Type="Int32" />
-          <NavigationProperty Name="AviaryType" Relationship="Self.FK_Aviary_AviaryType" FromRole="Aviary" ToRole="AviaryType" />
-          <NavigationProperty Name="Dog" Relationship="Self.FK_Dog_Aviary" FromRole="Aviary" ToRole="Dog" />
+          <NavigationProperty Name="AviaryType" Relationship="HomelessDogsModel.FK_Aviary_AviaryType" FromRole="Aviary" ToRole="AviaryType" />
+          <NavigationProperty Name="Dog" Relationship="HomelessDogsModel.FK_Dog_Aviary" FromRole="Aviary" ToRole="Dog" />
         </EntityType>
         <EntityType Name="AviaryType">
           <Key>
@@ -218,7 +272,7 @@
           </Key>
           <Property Name="Id_aviary_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Aviary" Relationship="Self.FK_Aviary_AviaryType" FromRole="AviaryType" ToRole="Aviary" />
+          <NavigationProperty Name="Aviary" Relationship="HomelessDogsModel.FK_Aviary_AviaryType" FromRole="AviaryType" ToRole="Aviary" />
         </EntityType>
         <EntityType Name="Dog">
           <Key>
@@ -236,8 +290,9 @@
           <Property Name="IsGive" Type="Boolean" />
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Aviary" Relationship="Self.FK_Dog_Aviary" FromRole="Dog" ToRole="Aviary" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Dog_Gender" FromRole="Dog" ToRole="Gender" />
+          <NavigationProperty Name="Aviary" Relationship="HomelessDogsModel.FK_Dog_Aviary" FromRole="Dog" ToRole="Aviary" />
+          <NavigationProperty Name="Gender" Relationship="HomelessDogsModel.FK_Dog_Gender" FromRole="Dog" ToRole="Gender" />
+          <NavigationProperty Name="Survey" Relationship="HomelessDogsModel.FK_Survey_Dog" FromRole="Dog" ToRole="Survey" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -250,8 +305,8 @@
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Post" Relationship="Self.FK_Employee_Post" FromRole="Employee" ToRole="Post" />
-          <NavigationProperty Name="Survey" Relationship="Self.FK_Survey_Employee" FromRole="Employee" ToRole="Survey" />
+          <NavigationProperty Name="Post" Relationship="HomelessDogsModel.FK_Employee_Post" FromRole="Employee" ToRole="Post" />
+          <NavigationProperty Name="Survey" Relationship="HomelessDogsModel.FK_Survey_Employee" FromRole="Employee" ToRole="Survey" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -259,7 +314,7 @@
           </Key>
           <Property Name="Id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Dog" Relationship="Self.FK_Dog_Gender" FromRole="Gender" ToRole="Dog" />
+          <NavigationProperty Name="Dog" Relationship="HomelessDogsModel.FK_Dog_Gender" FromRole="Gender" ToRole="Dog" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -267,7 +322,7 @@
           </Key>
           <Property Name="Id_post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Post" FromRole="Post" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="HomelessDogsModel.FK_Employee_Post" FromRole="Post" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -275,7 +330,7 @@
           </Key>
           <Property Name="Id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Survey" Relationship="Self.FK_Survey_Status" FromRole="Status" ToRole="Survey" />
+          <NavigationProperty Name="Survey" Relationship="HomelessDogsModel.FK_Survey_Status" FromRole="Status" ToRole="Survey" />
         </EntityType>
         <EntityType Name="Survey">
           <Key>
@@ -288,22 +343,23 @@
           <Property Name="Illness" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Survey_Employee" FromRole="Survey" ToRole="Employee" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_Survey_Status" FromRole="Survey" ToRole="Status" />
+          <NavigationProperty Name="Dog" Relationship="HomelessDogsModel.FK_Survey_Dog" FromRole="Survey" ToRole="Dog" />
+          <NavigationProperty Name="Employee" Relationship="HomelessDogsModel.FK_Survey_Employee" FromRole="Survey" ToRole="Employee" />
+          <NavigationProperty Name="Status" Relationship="HomelessDogsModel.FK_Survey_Status" FromRole="Survey" ToRole="Status" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Aviary_AviaryType">
-          <End Role="AviaryType" Type="Self.AviaryType" Multiplicity="0..1" />
-          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <End Type="HomelessDogsModel.AviaryType" Role="AviaryType" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Aviary" Role="Aviary" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AviaryType">
               <PropertyRef Name="Id_aviary_type" />
@@ -314,8 +370,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Dog_Aviary">
-          <End Role="Aviary" Type="Self.Aviary" Multiplicity="0..1" />
-          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <End Type="HomelessDogsModel.Aviary" Role="Aviary" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Dog" Role="Dog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aviary">
               <PropertyRef Name="Id_aviary" />
@@ -326,8 +382,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Dog_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
-          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <End Type="HomelessDogsModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Dog" Role="Dog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="Id_gender" />
@@ -337,9 +393,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Survey_Dog">
+          <End Type="HomelessDogsModel.Dog" Role="Dog" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Survey" Role="Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id_dog" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_Post">
-          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="HomelessDogsModel.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Post">
               <PropertyRef Name="Id_post" />
@@ -350,8 +418,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Survey_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <End Type="HomelessDogsModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Survey" Role="Survey" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="Id_employee" />
@@ -362,8 +430,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Survey_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <End Type="HomelessDogsModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Survey" Role="Survey" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="Id_status" />
@@ -373,41 +441,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HomelessDogsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Aviary" EntityType="Self.Aviary" />
-          <EntitySet Name="AviaryType" EntityType="Self.AviaryType" />
-          <EntitySet Name="Dog" EntityType="Self.Dog" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Post" EntityType="Self.Post" />
-          <EntitySet Name="Status" EntityType="Self.Status" />
-          <EntitySet Name="Survey" EntityType="Self.Survey" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Aviary_AviaryType" Association="Self.FK_Aviary_AviaryType">
-            <End Role="AviaryType" EntitySet="AviaryType" />
-            <End Role="Aviary" EntitySet="Aviary" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Dog_Aviary" Association="Self.FK_Dog_Aviary">
-            <End Role="Aviary" EntitySet="Aviary" />
-            <End Role="Dog" EntitySet="Dog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Dog_Gender" Association="Self.FK_Dog_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Dog" EntitySet="Dog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
-            <End Role="Post" EntitySet="Post" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Survey_Employee" Association="Self.FK_Survey_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Survey" EntitySet="Survey" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Survey_Status" Association="Self.FK_Survey_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Survey" EntitySet="Survey" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -417,95 +450,95 @@
           <EntitySetMapping Name="Aviary">
             <EntityTypeMapping TypeName="HomelessDogsModel.Aviary">
               <MappingFragment StoreEntitySet="Aviary">
-                <ScalarProperty Name="Id_aviary" ColumnName="Id_aviary" />
                 <ScalarProperty Name="Id_aviary_type" ColumnName="Id_aviary_type" />
+                <ScalarProperty Name="Id_aviary" ColumnName="Id_aviary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AviaryType">
             <EntityTypeMapping TypeName="HomelessDogsModel.AviaryType">
               <MappingFragment StoreEntitySet="AviaryType">
-                <ScalarProperty Name="Id_aviary_type" ColumnName="Id_aviary_type" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_aviary_type" ColumnName="Id_aviary_type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dog">
             <EntityTypeMapping TypeName="HomelessDogsModel.Dog">
               <MappingFragment StoreEntitySet="Dog">
-                <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
-                <ScalarProperty Name="Id_aviary" ColumnName="Id_aviary" />
-                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="IsDie" ColumnName="IsDie" />
-                <ScalarProperty Name="IsGive" ColumnName="IsGive" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="IsGive" ColumnName="IsGive" />
+                <ScalarProperty Name="IsDie" ColumnName="IsDie" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
+                <ScalarProperty Name="Id_aviary" ColumnName="Id_aviary" />
+                <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="HomelessDogsModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
-                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="HomelessDogsModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="HomelessDogsModel.Post">
               <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
             <EntityTypeMapping TypeName="HomelessDogsModel.Status">
               <MappingFragment StoreEntitySet="Status">
-                <ScalarProperty Name="Id_status" ColumnName="Id_status" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_status" ColumnName="Id_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Survey">
             <EntityTypeMapping TypeName="HomelessDogsModel.Survey">
               <MappingFragment StoreEntitySet="Survey">
-                <ScalarProperty Name="Id_survey" ColumnName="Id_survey" />
-                <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
-                <ScalarProperty Name="Id_doctor" ColumnName="Id_doctor" />
-                <ScalarProperty Name="Id_status" ColumnName="Id_status" />
-                <ScalarProperty Name="Illness" ColumnName="Illness" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Illness" ColumnName="Illness" />
+                <ScalarProperty Name="Id_status" ColumnName="Id_status" />
+                <ScalarProperty Name="Id_doctor" ColumnName="Id_doctor" />
+                <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
+                <ScalarProperty Name="Id_survey" ColumnName="Id_survey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="HomelessDogsModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
