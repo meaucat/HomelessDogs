@@ -22,7 +22,7 @@
             <StackPanel Orientation="Vertical" Margin="0 20 0 0" HorizontalAlignment="Left" >
                 <Button x:Name="EmployeesBTN" Height="48" Width="350" Content="Просмотреть список сотрудников" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent" HorizontalAlignment="Left" Click="EmployeesBTN_Click"/>
                 <Button x:Name="PetsBTN" Height="48" Width="350" Content="Просмотреть список питомцев" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent"  HorizontalAlignment="Left" Click="PetsBTN_Click" />
-                <Button x:Name="HistoryOperationBTN" Height="48" Width="350" Content="Просмотреть историю операций" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent" HorizontalAlignment="Left" Click="HistoryOperationBTN_Click" />
+                <Button x:Name="HistoryOperationBTN" Height="48" Width="350" Content="Просмотреть историю приемов" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent" HorizontalAlignment="Left" Click="HistoryOperationBTN_Click" />
                 <Button x:Name="VolyeriBTN" Height="48" Width="350" Content="Вольеры в приюте" FontSize="16"  Margin="0 10 0 0" BorderBrush="Transparent"  HorizontalAlignment="Left" Click="VolyeriBTN_Click" />
                 </StackPanel>
 

@@ -21,13 +21,23 @@ namespace HomelessDogs.Pages
     /// </summary>
     public partial class MainGuestPage : Page
     {
+        public Employee currentEmployee;
         public static List<Dog> dogs = new List<Dog>();
-        public MainGuestPage()
+        public MainGuestPage(Employee employee)
         {
             InitializeComponent();
+            currentEmployee = employee;
 
-            dogs = App.db.Dog.Where(x => x.IsDie == false && x.IsGive == false).ToList();
-            AllAnimalsLV.ItemsSource = dogs;
+            if (currentEmployee.Id_employee != 0)
+            {
+                dogs = App.db.Dog.ToList();
+                AllAnimalsLV.ItemsSource = dogs;
+            }
+            else
+            {
+                dogs = App.db.Dog.Where(x => x.IsDie == false && x.IsGive == false).ToList();
+                AllAnimalsLV.ItemsSource = dogs;
+            }
         }
 
         private void AllAnimalsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -38,7 +48,12 @@ namespace HomelessDogs.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AuthorizationPage());
+            if (currentEmployee.Id_employee == 0)
+            {
+                NavigationService.Navigate(new AuthorizationPage());
+                return;
+            }
+            NavigationService.Navigate(new MainAdminPage());
         }
     }
 }

@@ -32,7 +32,7 @@ namespace HomelessDogs.Pages
 
         private void PetsBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new MainGuestPage(App.employee));
         }
 
         private void HistoryOperationBTN_Click(object sender, RoutedEventArgs e)

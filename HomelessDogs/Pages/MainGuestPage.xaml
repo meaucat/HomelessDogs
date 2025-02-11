@@ -94,6 +94,6 @@
             </ListView>
         </StackPanel>
 
-        <Button x:Name="BackBTN" Height="48" Width="243" Content="Выйти из гостевого режима" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click"/>
+        <Button x:Name="BackBTN" Height="48" Width="243" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click"/>
     </Grid>
 </Page>

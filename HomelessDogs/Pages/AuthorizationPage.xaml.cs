@@ -55,7 +55,7 @@ namespace HomelessDogs.Pages
 
         private void GuestBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MainGuestPage());
+            NavigationService.Navigate(new MainGuestPage(new Employee()));
         }
     }
 }

@@ -21,13 +21,13 @@ namespace HomelessDogs.Pages
     /// </summary>
     public partial class AviaryPage : Page
     {
-        public static List<Aviary> aviaries = new List<Aviary>();
+        public static List<Dog> aviaries = new List<Dog>();
         public AviaryPage()
         {
             InitializeComponent();
 
             AviaryTypeCb.ItemsSource = App.db.AviaryType.ToList();
-            aviaries = App.db.Aviary.ToList();
+            aviaries = App.db.Dog.Where(i=>i.Id_aviary != null).ToList();
             AllAviariesLV.ItemsSource = aviaries;
         }
 
@@ -57,7 +57,7 @@ namespace HomelessDogs.Pages
                 App.db.Aviary.Add(aviary);
                 App.db.SaveChanges();
 
-                aviaries = App.db.Aviary.ToList();
+                aviaries = App.db.Dog.ToList();
                 AllAviariesLV.ItemsSource = aviaries;
 
                 MessageBox.Show("Вольер успешно добавлен.");

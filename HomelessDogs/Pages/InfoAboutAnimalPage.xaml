@@ -20,9 +20,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Images/logo.png" Width="249" Height="174"/>
-
-                
-                    <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="SerialNumberTB" FontSize="32" FontWeight="DemiBold"></TextBlock>
                     <TextBlock FontSize="32" Foreground="#2DA700" FontWeight="DemiBold" Margin="30 0 0 0">Ищет хозяина</TextBlock>
