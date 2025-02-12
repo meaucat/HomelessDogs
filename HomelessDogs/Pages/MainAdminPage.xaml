@@ -16,7 +16,7 @@
             <TextBlock x:Name="AdminNameTB" FontSize="48" FontWeight="Bold" Foreground="Red"/>
 
 
-            <TextBlock x:Name="LastOperationTB" Text="За последнее время было проведено 27 операций." FontSize="18" Margin="0 20 0 0" />
+            <TextBlock x:Name="LastOperationTB" FontSize="18" Margin="0 20 0 0" />
                
 
             <StackPanel Orientation="Vertical" Margin="0 20 0 0" HorizontalAlignment="Left" >

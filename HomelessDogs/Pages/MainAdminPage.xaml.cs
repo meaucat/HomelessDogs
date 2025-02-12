@@ -24,6 +24,9 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
             AdminNameTB.Text = App.employee.AdminText;
+            DateTime? mounthAgo = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+            int count = App.db.Survey.Where(s => s.Date > mounthAgo).ToList().Count();
+            LastOperationTB.Text = $"За последнее время было проведено {count} приемов.";
         }
         private void EmployeesBTN_Click(object sender, RoutedEventArgs e)
         {

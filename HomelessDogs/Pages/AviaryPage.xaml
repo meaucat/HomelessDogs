@@ -54,8 +54,8 @@ x:Name="AllAviariesLV"
                             </StackPanel>
                             <StackPanel Orientation="Vertical"
                         Margin="90 0 0 0">
-                                    <TextBlock>Статус</TextBlock>
-                                <TextBlock Text="{Binding Status}"
+                                    <TextBlock>Собака</TextBlock>
+                                <TextBlock Text="{Binding SerialNumber}"
                            FontSize="24"
                            FontWeight="SemiBold"></TextBlock>
                             </StackPanel>
