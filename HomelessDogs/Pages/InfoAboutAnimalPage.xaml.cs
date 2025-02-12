@@ -21,6 +21,7 @@ namespace HomelessDogs.Pages
     /// </summary>
     public partial class InfoAboutAnimalPage : Page
     {
+        
         public InfoAboutAnimalPage()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace HomelessDogs.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+                NavigationService.Navigate(new MainGuestPage(new Employee()));
         }
     }
 }

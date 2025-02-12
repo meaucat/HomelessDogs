@@ -22,19 +22,19 @@ namespace HomelessDogs.Models
             {
                 if (Age % 100 >= 11 && Age % 100 <= 14)
                 {
-                    return $"{Age} лет.";
+                    return $"{Age} лет";
                 }
                 else if (Age % 10 == 1)
                 {
-                    return $"{Age} год.";
+                    return $"{Age} год";
                 }
                 else if (Age % 10 >= 2 && Age % 10 <= 4)
                 {
-                    return $"{Age} года.";
+                    return $"{Age} года";
                 }
                 else
                 {
-                    return $"{Age} лет.";
+                    return $"{Age} лет";
                 }
             }
         }

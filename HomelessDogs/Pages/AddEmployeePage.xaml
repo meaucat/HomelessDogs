@@ -1,0 +1,102 @@
+﻿<Page x:Class="HomelessDogs.Pages.AddEmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HomelessDogs.Pages"
+      mc:Ignorable="d" 
+       d:DesignHeight="1047" d:DesignWidth="1047"
+      Title="AddEmployeePage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="50 50 0 0">
+            <TextBlock Text="Добавление сотрудника" FontSize="48" FontWeight="SemiBold"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
+                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
+                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Дата приема</TextBlock>
+                    <DatePicker Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                 Name="DateDP"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"></DatePicker>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                    <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Статус приема</TextBlock>
+                    <ComboBox Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                  Name="StatusCB"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"></ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Пациент</TextBlock>
+                    <TextBox Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"
+                                 Name="PacientTB"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                    <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Порода</TextBlock>
+                    <TextBox Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"
+                                 Name="TypeTB"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                    <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Лечащий врач</TextBlock>
+                    <ComboBox Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"
+                                  Name="DoctorCB"></ComboBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                            Margin="0 20 0 0"
+                            HorizontalAlignment="Left">
+                <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Диагноз</TextBlock>
+                <TextBox Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"
+                             Name="DiagnosisTB"></TextBox>
+            </StackPanel>
+
+
+
+            
+
+
+        </StackPanel>
+   
+    </Grid>
+</Page>

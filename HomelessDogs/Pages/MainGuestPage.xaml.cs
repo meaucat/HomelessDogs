@@ -11,7 +11,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HomelessDogs.Pages
@@ -43,7 +42,15 @@ namespace HomelessDogs.Pages
         private void AllAnimalsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.selectedDog = AllAnimalsLV.SelectedItem as Dog;
-            NavigationService.Navigate(new InfoAboutAnimalPage());
+            if (currentEmployee.Id_employee == 0)
+            {
+                NavigationService.Navigate(new InfoAboutAnimalPage());
+            }
+            else
+            {
+                NavigationService.Navigate(new EditPetsPage());
+            }
+                
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

@@ -24,9 +24,9 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
             AdminNameTB.Text = App.employee.AdminText;
-            DateTime? mounthAgo = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+            DateTime? mounthAgo = DateTime.Now.Subtract(TimeSpan.FromDays(7));
             int count = App.db.Survey.Where(s => s.Date > mounthAgo).ToList().Count();
-            LastOperationTB.Text = $"За последнее время было проведено {count} приемов.";
+            LastOperationTB.Text = $"Приемов за последнюю неделю: {count}";
         }
         private void EmployeesBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +40,7 @@ namespace HomelessDogs.Pages
 
         private void HistoryOperationBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new VeterinarMainPage());
         }
 
         private void VolyeriBTN_Click(object sender, RoutedEventArgs e)

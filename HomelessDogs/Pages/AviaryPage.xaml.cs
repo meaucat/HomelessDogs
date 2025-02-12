@@ -53,7 +53,7 @@ namespace HomelessDogs.Pages
                 {
                     Id_aviary_type = (AviaryTypeCb.SelectedItem as AviaryType).Id_aviary_type,
                 };
-                App.db.Aviariy.Add(aviary);
+                App.db.Aviary.Add(aviary);
                 App.db.SaveChanges();
 
                 aviaries = App.db.Dog.ToList();
