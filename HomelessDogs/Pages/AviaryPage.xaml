@@ -74,7 +74,7 @@ x:Name="AllAviariesLV"
             <Button x:Name="EditAviaryBTN" Content="Редактировать" Height="60" Width="440" FontSize="25" HorizontalAlignment="Left" BorderBrush="Transparent" Click="EditAviaryBTN_Click"/>
         </StackPanel>
 
-        <Button x:Name="BackBTN" Height="48" Width="243" Content="НАЗАД НАХУЙ" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
+        <Button x:Name="BackBTN" Height="48" Width="243" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
 
     </Grid>
 </Page>

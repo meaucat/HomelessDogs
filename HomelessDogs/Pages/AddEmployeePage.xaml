@@ -13,88 +13,83 @@
             <TextBlock Text="Добавление сотрудника" FontSize="48" FontWeight="SemiBold"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
-                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
-                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться назад" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
+                <Button x:Name="AddEmployeeBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="AddEmployeeBTN_Click"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Дата приема</TextBlock>
-                    <DatePicker Height="56"
+                                   Foreground="#FF939393">Фамилия</TextBlock>
+                    <TextBox Height="56"
                                  Margin="0 10 0 0"
                                  Width="195"
-                                 Name="DateDP"
                                  BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"></DatePicker>
+                                 Background="#FFF7F7F7"
+                                 x:Name="SurnameTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                     <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Статус приема</TextBlock>
-                    <ComboBox Height="56"
+                                   Foreground="#FF939393">Имя</TextBlock>
+                    <TextBox Height="56"
                                  Margin="0 10 0 0"
                                  Width="195"
-                                  Name="StatusCB"
                                  BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"></ComboBox>
+                                 Background="#FFF7F7F7"
+                                 x:Name="NameTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                    <TextBlock FontSize="14"
+                                   Foreground="#FF939393">Отчество</TextBlock>
+                    <TextBox Height="56"
+                                 Margin="0 10 0 0"
+                                 Width="195"
+                                 BorderBrush="Transparent"
+                                 Background="#FFF7F7F7"
+                                 x:Name="PatronymicTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
+                </StackPanel>
+                
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
                 <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Пациент</TextBlock>
+                                   Foreground="#FF939393">Логин</TextBlock>
                     <TextBox Height="56"
                                  Margin="0 10 0 0"
                                  Width="195"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
-                                 Name="PacientTB"></TextBox>
+                                 x:Name="LoginTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                     <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Порода</TextBlock>
+                                   Foreground="#FF939393">Пароль</TextBlock>
                     <TextBox Height="56"
                                  Margin="0 10 0 0"
                                  Width="195"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
-                                 Name="TypeTB"></TextBox>
+                                 x:Name="PasswordTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                     <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Лечащий врач</TextBlock>
+                                   Foreground="#FF939393">Должность</TextBlock>
                     <ComboBox Height="56"
                                  Margin="0 10 0 0"
                                  Width="195"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
-                                  Name="DoctorCB"></ComboBox>
+                                  x:Name="PostCb"
+                              DisplayMemberPath="Name"></ComboBox>
                 </StackPanel>
 
 
             </StackPanel>
-
-            <StackPanel Orientation="Vertical"
-                            Margin="0 20 0 0"
-                            HorizontalAlignment="Left">
-                <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Диагноз</TextBlock>
-                <TextBox Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"
-                             Name="DiagnosisTB"></TextBox>
-            </StackPanel>
-
-
-
-            
-
 
         </StackPanel>
    

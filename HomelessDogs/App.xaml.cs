@@ -18,5 +18,6 @@ namespace HomelessDogs
         public static Employee employee;
         public static Aviary selectedAviary {  get; set; }
         public static Dog selectedDog { get; set; }
+        public static Employee selectedEmployee { get; set; }
     }
 }

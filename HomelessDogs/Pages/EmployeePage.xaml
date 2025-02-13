@@ -24,11 +24,11 @@
                        FontWeight="DemiBold">Сотрудники в приюте:</TextBlock>
 
             <ListView
-    x:Name="AllAnimalsLV"
+    x:Name="EmployeesLv"
       Height="750" d:ItemsSource="{d:SampleData ItemCount=5}"
       BorderBrush="Transparent"
       Background="Transparent"
-      VerticalAlignment="Top" SelectionChanged="AllAnimalsLV_SelectionChanged" >
+      VerticalAlignment="Top" SelectionChanged="EmployeesLv_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"></UniformGrid>
@@ -46,32 +46,32 @@
 
                             <StackPanel Orientation="Horizontal"
                         Margin="20 10 0 0">
-                                <TextBlock Text="{Binding SerialNumber}"
+                                <TextBlock Text="{Binding FullNameLv}"
                        FontSize="32"
                        FontWeight="DemiBold"></TextBlock>
 
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="20 10 0 0">
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock>Место проживания</TextBlock>
-                                    <TextBlock Text="{Binding Id_aviary, StringFormat='Вольер №{0}'}"
+                                    <TextBlock>Должность</TextBlock>
+                                    <TextBlock Text="{Binding Post.Name}"
                                FontSize="24"
                                FontWeight="SemiBold"></TextBlock>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="20 30 0 0">
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock>Возраст</TextBlock>
-                                    <TextBlock Text="{Binding Age}"
+                                    <TextBlock>Логин</TextBlock>
+                                    <TextBlock Text="{Binding Login}"
                                FontSize="24"
                                FontWeight="SemiBold"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical"
                             Margin="155 0 0 0">
-                                    <TextBlock>Статус</TextBlock>
-                                    <TextBlock Text="{Binding IsGiveText}"
+                                    <TextBlock>Пароль</TextBlock>
+                                    <TextBlock Text="{Binding Password}"
                                FontSize="24"
-                               FontWeight="SemiBold" Foreground="#2DA700"></TextBlock>
+                               FontWeight="SemiBold"/>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
@@ -79,6 +79,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button x:Name="AddEmployeeBtn" Height="48" Width="243" Content="Добавить сотрудника" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 25 0 0" BorderBrush="Transparent" Click="AddEmployeeBtn_Click"/>
         </StackPanel>
 
         <Button x:Name="BackBTN" Height="48" Width="243" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click"/>

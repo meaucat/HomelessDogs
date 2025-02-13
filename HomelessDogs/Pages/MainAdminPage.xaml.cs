@@ -30,7 +30,7 @@ namespace HomelessDogs.Pages
         }
         private void EmployeesBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EmployeePage());
         }
 
         private void PetsBTN_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace HomelessDogs.Pages
 
         private void HistoryOperationBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new VeterinarMainPage());
+
         }
 
         private void VolyeriBTN_Click(object sender, RoutedEventArgs e)

@@ -31,5 +31,13 @@ namespace HomelessDogs.Models
                 return $"{App.employee.Surname} {App.employee.Name.Remove(1)}.{App.employee.Patronymic.Remove(1)}";
             }
         }
+
+        public string FullNameLv
+        {
+            get
+            {
+                return $"{Surname} {Name} {Patronymic}";
+            }
+        }
     }
 }

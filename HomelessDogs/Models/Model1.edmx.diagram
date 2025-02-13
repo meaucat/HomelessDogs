@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="HomelessDogsModel.Post" Width="1.5" PointX="3" PointY="9.25" />
         <EntityTypeShape EntityType="HomelessDogsModel.Status" Width="1.5" PointX="5.25" PointY="6.375" />
         <EntityTypeShape EntityType="HomelessDogsModel.Survey" Width="1.5" PointX="7.5" PointY="1.5" />
+        <EntityTypeShape EntityType="HomelessDogsModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" />
         <AssociationConnector Association="HomelessDogsModel.FK_Aviary_AviaryType" />
         <AssociationConnector Association="HomelessDogsModel.FK_Dog_Aviary" />
         <AssociationConnector Association="HomelessDogsModel.FK_Dog_Gender" />

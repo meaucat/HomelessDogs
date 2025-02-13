@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,29 @@ namespace HomelessDogs.Pages
     /// </summary>
     public partial class EmployeePage : Page
     {
+        public static List<Employee> employees = new List<Employee>();
         public EmployeePage()
         {
             InitializeComponent();
+
+            employees = App.db.Employee.ToList();
+            EmployeesLv.ItemsSource = employees;
+        }
+
+        private void EmployeesLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.selectedEmployee = EmployeesLv.SelectedItem as Employee;
+            NavigationService.Navigate(new EditEmployeePage());
+        }
+
+        private void AddEmployeeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddEmployeePage());
+        }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainAdminPage());
         }
     }
 }
