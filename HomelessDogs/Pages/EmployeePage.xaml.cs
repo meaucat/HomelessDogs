@@ -26,7 +26,7 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
 
-            employees = App.db.Employee.ToList();
+            employees = App.db.Employee.Where(x => x.Id_post == 2).ToList();
             EmployeesLv.ItemsSource = employees;
         }
 

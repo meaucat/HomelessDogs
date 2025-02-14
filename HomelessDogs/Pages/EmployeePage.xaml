@@ -47,7 +47,7 @@
                             <StackPanel Orientation="Horizontal"
                         Margin="20 10 0 0">
                                 <TextBlock Text="{Binding FullNameLv}"
-                       FontSize="32"
+                       FontSize="28"
                        FontWeight="DemiBold"></TextBlock>
 
                             </StackPanel>

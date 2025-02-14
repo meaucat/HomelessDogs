@@ -24,8 +24,6 @@ namespace HomelessDogs.Pages
         public AddEmployeePage()
         {
             InitializeComponent();
-
-            PostCb.ItemsSource = App.db.Post.ToList();
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -51,7 +49,7 @@ namespace HomelessDogs.Pages
         private void AddEmployeeBTN_Click(object sender, RoutedEventArgs e)
         {
             var fieldsToCheck = new[] { SurnameTb.Text, NameTb.Text, PatronymicTb.Text, LoginTb.Text, PasswordTb.Text};
-            if (fieldsToCheck.Any(string.IsNullOrWhiteSpace) || PostCb.SelectedItem == null)
+            if (fieldsToCheck.Any(string.IsNullOrWhiteSpace))
             {
                 MessageBox.Show("Заполните все поля.");
             }
@@ -59,7 +57,7 @@ namespace HomelessDogs.Pages
             {
                 Employee employee = new Employee()
                 {
-                    Id_post = (PostCb.SelectedItem as Post).Id_post,
+                    Id_post = 2,
                     Surname = SurnameTb.Text,
                     Name = NameTb.Text,
                     Patronymic = PatronymicTb.Text,

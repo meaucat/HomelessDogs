@@ -43,9 +43,26 @@ namespace HomelessDogs.Pages
 
         private void AddAviaryBTN_Click(object sender, RoutedEventArgs e)
         {
+            if (AviaryTypeCb.SelectedItem == null)
+            {
+                MessageBox.Show("Необходимо выбрать тип вольера.");
+            }
+            else
+            {
+                Aviary aviary = new Aviary()
+                {
+                    Id_aviary_type = (AviaryTypeCb.SelectedItem as AviaryType).Id_aviary_type,
+                };
+                App.db.Aviary.Add(aviary);
+                App.db.SaveChanges();
 
+                aviaries = App.db.Dog.ToList();
+                AllAviariesLV.ItemsSource = aviaries;
+
+                MessageBox.Show("Вольер успешно добавлен.");
+            }
         }
 
-       
+
     }
 }

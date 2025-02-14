@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HomelessDogs.Pages
 {
@@ -25,6 +26,14 @@ namespace HomelessDogs.Pages
             InitializeComponent();
 
             NameVeterinarsTB.Text = App.employee.VetText;
+            DateTime now = DateTime.Today;
+
+            PlannedVisitsLV.ItemsSource = App.db.Survey.Where(x => x.Date >= now && x.Id_doctor == App.employee.Id_employee).ToList();
+            PreviousVisitsLV.ItemsSource = App.db.Survey.Where(x => x.Date < now && x.Id_doctor == App.employee.Id_employee).ToList();
+
+            int count = App.db.Survey.Where(x => x.Date == now).ToList().Count;
+
+            CountTb.Text = $"Приемов на сегодня: {count}. Хорошего Вам дня!";
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

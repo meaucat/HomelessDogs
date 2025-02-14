@@ -33,6 +33,5 @@ namespace HomelessDogs.Models
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Survey> Survey { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

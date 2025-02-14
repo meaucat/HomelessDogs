@@ -24,8 +24,6 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
             Upload();
-
-            PostCb.ItemsSource = App.db.Post.ToList();
         }
 
         private void Upload()
@@ -35,7 +33,6 @@ namespace HomelessDogs.Pages
             PatronymicTb.Text = App.selectedEmployee.Patronymic;
             LoginTb.Text = App.selectedEmployee.Login;
             PasswordTb.Text = App.selectedEmployee.Password;
-            PostCb.SelectedItem = App.selectedEmployee.Post;
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -53,6 +50,18 @@ namespace HomelessDogs.Pages
             }
         }
 
+        private void DeleteBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы точно хотите удалить сотрудника?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                App.db.Employee.Remove(App.selectedEmployee);
+                App.db.SaveChanges();
+                NavigationService.Navigate(new EmployeePage());
+            }
+        }
+
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EmployeePage());
@@ -60,7 +69,29 @@ namespace HomelessDogs.Pages
 
         private void EditEmployeeBTN_Click(object sender, RoutedEventArgs e)
         {
+            var fieldsToCheck = new[] { SurnameTb.Text, NameTb.Text, PatronymicTb.Text, LoginTb.Text, PasswordTb.Text };
+            if (fieldsToCheck.Any(string.IsNullOrWhiteSpace))
+            {
+                MessageBox.Show("Заполните все поля.");
+            }
+            else if (SurnameTb.Text == App.selectedEmployee.Surname && NameTb.Text == App.selectedEmployee.Name && PatronymicTb.Text == App.selectedEmployee.Patronymic && LoginTb.Text == App.selectedEmployee.Login && PasswordTb.Text == App.selectedEmployee.Password)
+            {
+                MessageBox.Show("Изменений не происходило.");
+                return;
+            }
+            else
+            {
+                App.selectedEmployee.Surname = SurnameTb.Text;
+                App.selectedEmployee.Name = NameTb.Text;
+                App.selectedEmployee.Patronymic = PatronymicTb.Text;
+                App.selectedEmployee.Login = LoginTb.Text;
+                App.selectedEmployee.Password = PasswordTb.Text;
+            }
 
+            App.db.SaveChanges();
+
+            MessageBox.Show("Данные изменены.");
+            NavigationService.Navigate(new EmployeePage());
         }
     }
 }
