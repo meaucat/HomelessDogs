@@ -56,9 +56,6 @@ namespace HomelessDogs.Pages
                 App.db.Aviary.Add(aviary);
                 App.db.SaveChanges();
 
-                aviaries = App.db.Dog.ToList();
-                AllAviariesLV.ItemsSource = aviaries;
-
                 MessageBox.Show("Вольер успешно добавлен.");
             }
         }

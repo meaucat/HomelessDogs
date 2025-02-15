@@ -22,7 +22,7 @@ x:Name="AllAviariesLV"
   Background="Transparent"
                 BorderThickness="1.5"
                 BorderBrush="Blue"
-  VerticalAlignment="Top" SelectionChanged="AllAnimalsLV_SelectionChanged" >
+  VerticalAlignment="Top">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="2"></UniformGrid>

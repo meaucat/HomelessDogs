@@ -84,6 +84,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddVisitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminListVisitsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +184,12 @@
     </Compile>
     <Compile Include="Pages\AddPetsPage.xaml.cs">
       <DependentUpon>AddPetsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddVisitPage.xaml.cs">
+      <DependentUpon>AddVisitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminListVisitsPage.xaml.cs">
+      <DependentUpon>AdminListVisitsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
