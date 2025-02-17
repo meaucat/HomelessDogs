@@ -29,5 +29,10 @@ namespace HomelessDogs.Pages
         {
 
         }
+
+        private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -23,11 +23,28 @@ namespace HomelessDogs.Pages
         public EditVisitPage()
         {
             InitializeComponent();
+            StatusCB.ItemsSource = App.db.Status.Select(x => x.Name).ToList();
+            CommentTb.Text = App.selectedSurvey.Comment;
+            DateDP.SelectedDate = App.selectedSurvey.Date;
+            StatusCB.SelectedIndex = App.selectedSurvey.Status.Id_status - 1;
+            PacientTB.Text = App.selectedSurvey.Dog.SerialNumber;
+            DiagnosisTB.Text = App.selectedSurvey.Illness.ToString();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new VisitsPage());
+        }
+
+        private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
+        {
+            //доделать
+            StatusCB.ItemsSource = App.db.Status.Select(x => x.Name).ToList();
+            CommentTb.Text = App.selectedSurvey.Comment;
+            DateDP.SelectedDate = App.selectedSurvey.Date;
+            StatusCB.SelectedIndex = App.selectedSurvey.Status.Id_status - 1;
+            PacientTB.Text = App.selectedSurvey.Dog.SerialNumber;
+            DiagnosisTB.Text = App.selectedSurvey.Illness.ToString();
         }
     }
 }

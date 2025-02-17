@@ -27,6 +27,7 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
             AviariesLv.ItemsSource = App.db.Aviary.ToList();
+            GenderCB.ItemsSource = App.db.Gender.Select(g => g.Title).ToList();
             AviaryTypeCb.ItemsSource = App.db.AviaryType.ToList();
         }
 
@@ -49,6 +50,7 @@ namespace HomelessDogs.Pages
                 };
                 App.db.Aviary.Add(aviary);
                 App.db.SaveChanges();
+                AviariesLv.ItemsSource = App.db.Aviary.ToList();
 
                 MessageBox.Show("Вольер успешно добавлен.");
             }
@@ -82,6 +84,10 @@ namespace HomelessDogs.Pages
                     Weight = int.Parse(WeightTB.Text),
                     Description = DescriptionTB.Text,
                     Age = int.Parse(AgeTB.Text),
+                    Id_gender = GenderCB.SelectedIndex + 1,
+                    IsGive = StatusCB.IsChecked,
+                    IsDie = DieCB.IsChecked,
+                    Id_aviary = (AviariesLv.SelectedItem as Aviary).Id_aviary                    
                 };
 
                 if (PetImg.Source != null)

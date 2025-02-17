@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,18 @@ namespace HomelessDogs.Pages
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AuthorizationPage());
+        }
+
+        private void PlannedVisitsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.selectedSurvey = PlannedVisitsLV.SelectedItem as Survey;
+            NavigationService.Navigate(new VisitsPage());
+        }
+
+        private void PreviousVisitsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.selectedSurvey = PreviousVisitsLV.SelectedItem as Survey;
+            NavigationService.Navigate(new VisitsPage());
         }
     }
 }

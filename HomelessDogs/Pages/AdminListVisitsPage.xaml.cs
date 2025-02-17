@@ -25,6 +25,7 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
             VisitsLV.ItemsSource = App.db.Survey.ToList();
+            NameVeterinarsTB.Text = App.employee.Name;
         }
 
         private void VisitsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)

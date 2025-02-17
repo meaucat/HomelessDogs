@@ -14,7 +14,7 @@
 
             <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
                 <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
-                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="EditInformationBTN_Click" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">

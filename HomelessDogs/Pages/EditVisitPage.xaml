@@ -14,7 +14,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
                     <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
-                    <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                    <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="EditInformationBTN_Click" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -53,29 +53,9 @@
                                  Name="PacientTB"></TextBox>
                     </StackPanel>
 
-                    <StackPanel Orientation="Vertical" Margin="20 0 0 0">
-                        <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Порода</TextBlock>
-                        <TextBox Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"
-                                 Name="TypeTB"></TextBox>
-                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="20 0 0 0"/>
 
-                    <StackPanel Orientation="Vertical" Margin="20 0 0 0">
-                        <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Лечащий врач</TextBlock>
-                        <ComboBox Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"
-                                  Name="DoctorCB"></ComboBox>
-                    </StackPanel>
-                    
-                    
+
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical"
@@ -107,36 +87,8 @@
                              Width="690"
                              Height="80"
                              TextWrapping="Wrap"
-                             Name="CommentTB"></TextBox>
+                             Name="CommentTb"></TextBox>
                 </StackPanel>
-
-                <ListView Width="700"
-                      Height="520"
-                      Name="CommentsLV"
-                      Margin="0 20 0 0"
-                      BorderBrush="Transparent"
-                      HorizontalAlignment="Left" d:ItemsSource="{d:SampleData ItemCount=15}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal" >
-                                    <TextBlock Text="{Binding FirstName}" Foreground="#FF939393"></TextBlock>
-                                    <TextBlock Text="{Binding LastName}" Margin="10 0 0 0" Foreground="#FF939393"></TextBlock>
-                                    <TextBlock Text=", " Foreground="#FF939393"></TextBlock>
-                                    <TextBlock Text="{Binding Role}" Foreground="#FF939393"></TextBlock>
-                                    <TextBlock Text="{Binding Date}" Foreground="#FF939393" Margin="20 0 0 0"></TextBlock>
-                                    <TextBlock Text="{Binding Time}" Foreground="#FF939393" Margin="5 0 0 0"></TextBlock>
-                                </StackPanel>
-                                <TextBlock Text="{Binding Comment}"
-                                       FontSize="16"
-                                       Margin="0 10 0 20"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-
-
-
             </StackPanel>
         </Grid>
     </ScrollViewer>

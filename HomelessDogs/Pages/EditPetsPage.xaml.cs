@@ -37,9 +37,10 @@ namespace HomelessDogs.Pages
             NameTB.Text = App.selectedDog.SerialNumber;
             StatusCB.IsChecked = App.selectedDog.IsGive;
             DieCB.IsChecked = App.selectedDog.IsDie;
-            GenderCB.SelectedIndex = (int)App.selectedDog.Id_gender;
             GenderCB.ItemsSource = App.db.Gender.ToList();
+            GenderCB.SelectedIndex = (int)App.selectedDog.Id_gender;
             PetImg.Source = ToImage(App.selectedDog.Photo);
+            AviariesLv.SelectedIndex = (int)App.selectedDog.Id_aviary;
         }
 
         public BitmapImage ToImage(byte[] bytes)
@@ -76,6 +77,7 @@ namespace HomelessDogs.Pages
                 App.db.SaveChanges();
 
                 MessageBox.Show("Вольер успешно добавлен.");
+                AviariesLv.ItemsSource = App.db.Aviary.ToList();
             }
         }
 
@@ -121,6 +123,10 @@ namespace HomelessDogs.Pages
                 App.selectedDog.Weight = int.Parse(WeightTB.Text);
                 App.selectedDog.Description = DescriptionTB.Text;
                 App.selectedDog.Age = int.Parse(AgeTB.Text);
+                App.selectedDog.IsDie = DieCB.IsChecked;
+                App.selectedDog.IsGive = StatusCB.IsChecked;
+                App.selectedDog.Id_gender = GenderCB.SelectedIndex + 1;
+                App.selectedDog.Id_aviary = AviariesLv.SelectedIndex + 1;
 
                 App.db.SaveChanges();
 

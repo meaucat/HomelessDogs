@@ -34,7 +34,7 @@
                   Height="400" d:ItemsSource="{d:SampleData ItemCount=5}"
                   BorderBrush="Transparent"
                   Background="Transparent"
-                  VerticalAlignment="Top" Margin="45,330,45,0">
+                  VerticalAlignment="Top" Margin="45,330,45,0" SelectionChanged="PlannedVisitsLV_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"></UniformGrid>
@@ -91,7 +91,7 @@
                 x:Name="PreviousVisitsLV"
                   Height="400" d:ItemsSource="{d:SampleData ItemCount=5}"
                   BorderBrush="Transparent"
-                  VerticalAlignment="Top" Margin="45,850,45,0" Foreground="#FF9C9C9C">
+                  VerticalAlignment="Top" Margin="45,850,45,0" Foreground="#FF9C9C9C" SelectionChanged="PreviousVisitsLV_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"></UniformGrid>

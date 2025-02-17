@@ -61,7 +61,7 @@
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Пол питомца</TextBlock>
-                            <ComboBox Name="GenderCB" Padding="10" FontSize="18" FontWeight="SemiBold" DisplayMemberPath="Name"/>
+                            <ComboBox Name="GenderCB" Padding="10" FontSize="18" FontWeight="SemiBold"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">

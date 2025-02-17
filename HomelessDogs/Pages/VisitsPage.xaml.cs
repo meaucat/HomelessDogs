@@ -23,6 +23,12 @@ namespace HomelessDogs.Pages
         public VisitsPage()
         {
             InitializeComponent();
+            CommentTb.Text = App.selectedSurvey.Comment;
+            DateTimeTbB.Text = App.selectedSurvey.Date.ToString();
+            StatusTB.Text = App.selectedSurvey.Status.Name;
+            PacientTB.Text = App.selectedSurvey.Dog.SerialNumber;
+            DiagnosisTB.Text = App.selectedSurvey.Illness.ToString();
+            DoctorTB.Text = App.selectedSurvey.Employee.Name;
 
             if (App.employee.Id_post != 1)
             {
@@ -41,7 +47,15 @@ namespace HomelessDogs.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new VisitsPage());
+            if (App.employee.Id_post == 1)
+            {
+                NavigationService.Navigate(new AdminListVisitsPage());
+            }
+            else
+            {
+                NavigationService.Navigate(new VeterinarMainPage());
+
+            }
         }
     }
 }
