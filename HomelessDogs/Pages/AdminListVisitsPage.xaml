@@ -25,17 +25,17 @@
                 <TextBlock x:Name="NameVeterinarsTB" FontSize="48" FontWeight="Bold" Foreground="Red"/>
 
                 <TextBlock x:Name="CountTb"  FontSize="20" Margin="0 20 0 0" />
-                <TextBlock  FontSize="32" FontWeight="SemiBold" Margin="0 30 0 0">Предстоящие приемы:</TextBlock>
+                <TextBlock Text="Список приемов:" FontSize="32" FontWeight="SemiBold" Margin="0 30 0 0"/>
             </StackPanel>
 
-            <Button x:Name="BackBTN" Height="48" Width="223" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click" />
+            <Button x:Name="BackBTN" Height="48" Width="223" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click"/>
 
             <ListView
-        x:Name="PlannedVisitsLV"
+        x:Name="VisitsLV"
           Height="400" d:ItemsSource="{d:SampleData ItemCount=5}"
           BorderBrush="Transparent"
           Background="Transparent"
-          VerticalAlignment="Top" Margin="45,330,45,0">
+          VerticalAlignment="Top" Margin="45,330,45,0" SelectionChanged="VisitsLV_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"></UniformGrid>
@@ -86,8 +86,6 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-
-          
         </Grid>
     </Grid>
 </Page>

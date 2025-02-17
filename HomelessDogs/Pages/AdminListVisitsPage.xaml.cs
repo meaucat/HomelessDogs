@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,18 @@ namespace HomelessDogs.Pages
         public AdminListVisitsPage()
         {
             InitializeComponent();
+            VisitsLV.ItemsSource = App.db.Survey.ToList();
+        }
+
+        private void VisitsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.selectedSurvey = VisitsLV.SelectedItem as Survey;
+            NavigationService.Navigate(new VisitsPage());
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new MainAdminPage());
         }
     }
 }

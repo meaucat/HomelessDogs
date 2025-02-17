@@ -23,6 +23,15 @@ namespace HomelessDogs.Pages
         public VisitsPage()
         {
             InitializeComponent();
+
+            if (App.employee.Id_post != 1)
+            {
+                EditInformationBTN.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                EditInformationBTN.Visibility = Visibility.Hidden;
+            }
         }
 
         private void EditInformationBTN_Click(object sender, RoutedEventArgs e)

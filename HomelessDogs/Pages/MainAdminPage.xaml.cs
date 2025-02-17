@@ -40,7 +40,7 @@ namespace HomelessDogs.Pages
 
         private void HistoryOperationBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AdminListVisitsPage());
         }
 
         private void VolyeriBTN_Click(object sender, RoutedEventArgs e)

@@ -1,6 +1,9 @@
 ﻿using HomelessDogs.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +14,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -24,7 +28,8 @@ namespace HomelessDogs.Pages
         public EditPetsPage()
         {
             InitializeComponent();
-            BylatEblanLV.ItemsSource = App.db.Aviary.ToList();
+            AviariesLv.ItemsSource = App.db.Aviary.ToList();
+            AviaryTypeCb.ItemsSource = App.db.AviaryType.ToList();
             DescriptionTB.Text = App.selectedDog.Description;
             WeightTB.Text = App.selectedDog.Weight.ToString();
             HeightTB.Text = App.selectedDog.Height.ToString();
@@ -34,11 +39,25 @@ namespace HomelessDogs.Pages
             DieCB.IsChecked = App.selectedDog.IsDie;
             GenderCB.SelectedIndex = (int)App.selectedDog.Id_gender;
             GenderCB.ItemsSource = App.db.Gender.ToList();
+            PetImg.Source = ToImage(App.selectedDog.Photo);
+        }
+
+        public BitmapImage ToImage(byte[] bytes)
+        {
+            using (var ms = new MemoryStream(bytes))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MainAdminPage());
+            NavigationService.Navigate(new MainGuestPage(App.employee));
         }
 
         private void AddAviaryBTN_Click(object sender, RoutedEventArgs e)
@@ -60,6 +79,54 @@ namespace HomelessDogs.Pages
             }
         }
 
+        private void EditPhotoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
+            };
+            if (openFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                App.selectedDog.Photo = File.ReadAllBytes(openFileDialog.FileName);
+                PetImg.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+            else
+            {
+                MessageBox.Show("Изменений не происходило.");
+                return;
+            }
 
+            App.db.Dog.AddOrUpdate(App.selectedDog);
+            App.db.SaveChanges();
+
+            MessageBox.Show("Фотография питомца выбрана.");
+        }
+
+        private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var fieldsToCheck = new[] { NameTB.Text, AgeTB.Text, HeightTB.Text, WeightTB.Text, DescriptionTB.Text, };
+            if (fieldsToCheck.Any(string.IsNullOrWhiteSpace) || GenderCB.SelectedItem == null)
+            {
+                MessageBox.Show("Заполните все поля.");
+            }
+            else if (NameTB.Text == App.selectedDog.SerialNumber && AgeTB.Text == App.selectedDog.Age.ToString() && HeightTB.Text == App.selectedDog.Height.ToString() &&  WeightTB.Text == App.selectedDog.Weight.ToString() && DescriptionTB.Text == App.selectedDog.Description)
+            {
+                MessageBox.Show("Изменений не происходило.");
+                return;
+            }
+            else
+            {
+                App.selectedDog.SerialNumber = NameTB.Text;
+                App.selectedDog.Height = int.Parse(HeightTB.Text);
+                App.selectedDog.Weight = int.Parse(WeightTB.Text);
+                App.selectedDog.Description = DescriptionTB.Text;
+                App.selectedDog.Age = int.Parse(AgeTB.Text);
+
+                App.db.SaveChanges();
+
+                MessageBox.Show("Данные изменены.");
+                NavigationService.Navigate(new MainGuestPage(App.employee));
+            }
+        }
     }
 }

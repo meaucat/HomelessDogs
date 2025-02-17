@@ -31,11 +31,13 @@ namespace HomelessDogs.Pages
             {
                 dogs = App.db.Dog.ToList();
                 AllAnimalsLV.ItemsSource = dogs;
+                AddPetBTN.Visibility = Visibility.Visible;
             }
             else
             {
                 dogs = App.db.Dog.Where(x => x.IsDie == false && x.IsGive == false).ToList();
                 AllAnimalsLV.ItemsSource = dogs;
+                AddPetBTN.Visibility = Visibility.Hidden;
             }
         }
 
@@ -61,6 +63,11 @@ namespace HomelessDogs.Pages
                 return;
             }
             NavigationService.Navigate(new MainAdminPage());
+        }
+
+        private void AddPetBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddPetsPage());
         }
     }
 }

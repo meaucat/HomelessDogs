@@ -13,17 +13,14 @@
             <TextBlock Text="Добавление питомца" FontSize="48" FontWeight="SemiBold"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
-                <Button x:Name="BackBTN" Height="48" Width="235" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click" />
-                <Button x:Name="EditInformationBTN" Height="48" Width="275" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                <Button x:Name="BackBTN" Height="48" Width="235" Content="Вернуться назад" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
+                <Button x:Name="AddInformationBTN" Height="48" Width="275" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="AddInformationBTN_Click"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Border BorderBrush="Blue" BorderThickness="0.5">
-                    <Image Source="/Images/logo.png" Width="249" Height="174"/>
+                    <Image x:Name="PetImg" Width="249" Height="174"/>
                 </Border>
-
-
-
 
                 <StackPanel Orientation="Vertical" Margin="15 0 0 0">
 
@@ -34,6 +31,7 @@
                                FontSize="18"
                                FontWeight="SemiBold"
                                Name="NameTB"
+                                      MaxLength="10"
                                />
                         </StackPanel>
 
@@ -48,13 +46,6 @@
                                FontWeight="SemiBold" />
                         </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Margin="300 0 0 0">
-
-                            <ComboBox x:Name="AviaryTypeCb" DisplayMemberPath="Name" Width="250" Height="50" FontSize="20" HorizontalAlignment="Left" Margin="0 0 0 0"/>
-                            <Button x:Name="AddAviaryBTN" Content="Добавить вольер" Height="50" Width="250" FontSize="20" HorizontalAlignment="Left" Margin="0 10 0 0" BorderBrush="Transparent" Click="AddAviaryBTN_Click"/>
-
-                        </StackPanel>
-
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
@@ -64,7 +55,8 @@
                                       Padding="10"
                                FontSize="18"
                                FontWeight="SemiBold"
-                               Name="AgeTB"/>
+                               Name="AgeTB"
+                                 MaxLength="2"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
@@ -74,40 +66,44 @@
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Рост</TextBlock>
-                            <TextBox  Padding="10"
-                                      FontSize="18"
+                            <TextBox        Padding="10"
+FontSize="18"
                                FontWeight="SemiBold"
-                               Name="HeightTB"/>
+                               Name="HeightTB" MaxLength="5"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                             <TextBlock FontSize="14" Foreground="#939393">Вес</TextBlock>
                             <TextBox      Padding="10" FontSize="18"
                                FontWeight="SemiBold"
-                               Name="WeightTB"/>
+                               Name="WeightTB"
+                                           MaxLength="3"/>
                         </StackPanel>
-
-                       
 
                     </StackPanel>
                 </StackPanel>
 
+                <StackPanel Orientation="Vertical" Margin="100 0 0 0">
+
+                    <ComboBox x:Name="AviaryTypeCb" DisplayMemberPath="Name" Width="250" Height="50" FontSize="20" HorizontalAlignment="Left" Margin="0 0 0 0"/>
+                    <Button x:Name="AddAviaryBTN" Content="Добавить вольер" Height="50" Width="250" FontSize="20" HorizontalAlignment="Left" Margin="0 10 0 0" BorderBrush="Transparent" Click="AddAviaryBTN_Click"/>
+                    <ListView x:Name="AviariesLv" d:ItemsSource="{d:SampleData ItemCount=5}" Height="100" Margin="0 20 0 0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="15" Margin="35 0 0 0" Text="{Binding Id_aviary}"/>
+                                    <TextBlock FontSize="15" Margin="20 0 0 0" Text="{Binding AviaryType.Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
             </StackPanel>
-            <Button x:Name="EditPhoto" Height="48" Width="235" Content="Редактировать фото" FontSize="16" Margin="0 10 749 0" BorderBrush="Transparent" Background="#FFF7F7F7" />
+            <Button x:Name="AddPhotoBtn" Height="48" Width="235" Content="Добавить фото" FontSize="16" Margin="0 10 739 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="AddPhotoBtn_Click"/>
             <TextBlock Text="Описание питомца" FontWeight="DemiBold" FontSize="32" Margin="0 70 0 0"/>
             <TextBox x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="0 25 0 0" FontSize="20" Height="400"  Width="653" TextWrapping="WrapWithOverflow"/>
         </StackPanel>
-
-        <ListView x:Name="BylatEblanLV" d:ItemsSource="{d:SampleData ItemCount=5}" Height="60" Width="250" Margin="775,364,22,623" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="15" Margin="55 0 0 0" Text="{Binding Id_aviary}"/>
-                        <TextBlock FontSize="15" Margin="20 0 0 0" Text="{Binding AviaryType.Name}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
 
     </Grid>
 </Page>
