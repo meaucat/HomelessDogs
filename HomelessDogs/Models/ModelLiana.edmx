@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище HomelessDogsModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aviary">
+          <Key>
+            <PropertyRef Name="Id_aviary" />
+          </Key>
+          <Property Name="Id_aviary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_aviary_type" Type="int" />
+        </EntityType>
+        <EntityType Name="AviaryType">
+          <Key>
+            <PropertyRef Name="Id_aviary_type" />
+          </Key>
+          <Property Name="Id_aviary_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="Id_dog" />
+          </Key>
+          <Property Name="Id_dog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_aviary" Type="int" />
+          <Property Name="Id_gender" Type="int" />
+          <Property Name="SerialNumber" Type="nvarchar(max)" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+          <Property Name="IsDie" Type="bit" />
+          <Property Name="IsGive" Type="bit" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id_employee" />
+          </Key>
+          <Property Name="Id_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_post" Type="int" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_gender" />
+          </Key>
+          <Property Name="Id_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id_post" />
+          </Key>
+          <Property Name="Id_post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id_status" />
+          </Key>
+          <Property Name="Id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id_survey" />
+          </Key>
+          <Property Name="Id_survey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_dog" Type="int" />
+          <Property Name="Id_doctor" Type="int" />
+          <Property Name="Id_status" Type="int" />
+          <Property Name="Illness" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Aviary_AviaryType">
+          <End Role="AviaryType" Type="Self.AviaryType" Multiplicity="0..1" />
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AviaryType">
+              <PropertyRef Name="Id_aviary_type" />
+            </Principal>
+            <Dependent Role="Aviary">
+              <PropertyRef Name="Id_aviary_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dog_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="0..1" />
+          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="Id_aviary" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="Id_aviary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dog_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_gender" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="Id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id_post" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Id_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Dog">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id_dog" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id_status" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище HomelessDogsModel1Container">
+          <EntitySet Name="Aviary" EntityType="Self.Aviary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AviaryType" EntityType="Self.AviaryType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Aviary_AviaryType" Association="Self.FK_Aviary_AviaryType">
+            <End Role="AviaryType" EntitySet="AviaryType" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Aviary" Association="Self.FK_Dog_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Gender" Association="Self.FK_Dog_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Dog" Association="Self.FK_Survey_Dog">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Employee" Association="Self.FK_Survey_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Status" Association="Self.FK_Survey_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HomelessDogsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aviary">
+          <Key>
+            <PropertyRef Name="Id_aviary" />
+          </Key>
+          <Property Name="Id_aviary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_aviary_type" Type="Int32" />
+          <NavigationProperty Name="AviaryType" Relationship="Self.FK_Aviary_AviaryType" FromRole="Aviary" ToRole="AviaryType" />
+          <NavigationProperty Name="Dog" Relationship="Self.FK_Dog_Aviary" FromRole="Aviary" ToRole="Dog" />
+        </EntityType>
+        <EntityType Name="AviaryType">
+          <Key>
+            <PropertyRef Name="Id_aviary_type" />
+          </Key>
+          <Property Name="Id_aviary_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_Aviary_AviaryType" FromRole="AviaryType" ToRole="Aviary" />
+        </EntityType>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="Id_dog" />
+          </Key>
+          <Property Name="Id_dog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_aviary" Type="Int32" />
+          <Property Name="Id_gender" Type="Int32" />
+          <Property Name="SerialNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="IsDie" Type="Boolean" />
+          <Property Name="IsGive" Type="Boolean" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Aviary" Relationship="Self.FK_Dog_Aviary" FromRole="Dog" ToRole="Aviary" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Dog_Gender" FromRole="Dog" ToRole="Gender" />
+          <NavigationProperty Name="Survey" Relationship="Self.FK_Survey_Dog" FromRole="Dog" ToRole="Survey" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id_employee" />
+          </Key>
+          <Property Name="Id_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_post" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Employee_Post" FromRole="Employee" ToRole="Post" />
+          <NavigationProperty Name="Survey" Relationship="Self.FK_Survey_Employee" FromRole="Employee" ToRole="Survey" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_gender" />
+          </Key>
+          <Property Name="Id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dog" Relationship="Self.FK_Dog_Gender" FromRole="Gender" ToRole="Dog" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id_post" />
+          </Key>
+          <Property Name="Id_post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Post" FromRole="Post" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id_status" />
+          </Key>
+          <Property Name="Id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Survey" Relationship="Self.FK_Survey_Status" FromRole="Status" ToRole="Survey" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id_survey" />
+          </Key>
+          <Property Name="Id_survey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_dog" Type="Int32" />
+          <Property Name="Id_doctor" Type="Int32" />
+          <Property Name="Id_status" Type="Int32" />
+          <Property Name="Illness" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dog" Relationship="Self.FK_Survey_Dog" FromRole="Survey" ToRole="Dog" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Survey_Employee" FromRole="Survey" ToRole="Employee" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Survey_Status" FromRole="Survey" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_Aviary_AviaryType">
+          <End Role="AviaryType" Type="Self.AviaryType" Multiplicity="0..1" />
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AviaryType">
+              <PropertyRef Name="Id_aviary_type" />
+            </Principal>
+            <Dependent Role="Aviary">
+              <PropertyRef Name="Id_aviary_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dog_Aviary">
+          <End Role="Aviary" Type="Self.Aviary" Multiplicity="0..1" />
+          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aviary">
+              <PropertyRef Name="Id_aviary" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="Id_aviary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dog_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_gender" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="Id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Dog">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id_dog" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id_post" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Id_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id_status" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="Id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HomelessDogsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aviary" EntityType="Self.Aviary" />
+          <EntitySet Name="AviaryType" EntityType="Self.AviaryType" />
+          <EntitySet Name="Dog" EntityType="Self.Dog" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Survey" EntityType="Self.Survey" />
+          <AssociationSet Name="FK_Aviary_AviaryType" Association="Self.FK_Aviary_AviaryType">
+            <End Role="AviaryType" EntitySet="AviaryType" />
+            <End Role="Aviary" EntitySet="Aviary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Aviary" Association="Self.FK_Dog_Aviary">
+            <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Gender" Association="Self.FK_Dog_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Dog" Association="Self.FK_Survey_Dog">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Employee" Association="Self.FK_Survey_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Status" Association="Self.FK_Survey_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HomelessDogsModel1Container" CdmEntityContainer="HomelessDogsEntities1">
+          <EntitySetMapping Name="Aviary">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Aviary">
+              <MappingFragment StoreEntitySet="Aviary">
+                <ScalarProperty Name="Id_aviary" ColumnName="Id_aviary" />
+                <ScalarProperty Name="Id_aviary_type" ColumnName="Id_aviary_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AviaryType">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.AviaryType">
+              <MappingFragment StoreEntitySet="AviaryType">
+                <ScalarProperty Name="Id_aviary_type" ColumnName="Id_aviary_type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dog">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Dog">
+              <MappingFragment StoreEntitySet="Dog">
+                <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
+                <ScalarProperty Name="Id_aviary" ColumnName="Id_aviary" />
+                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="IsDie" ColumnName="IsDie" />
+                <ScalarProperty Name="IsGive" ColumnName="IsGive" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id_status" ColumnName="Id_status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Survey">
+            <EntityTypeMapping TypeName="HomelessDogsModel1.Survey">
+              <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="Id_survey" ColumnName="Id_survey" />
+                <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
+                <ScalarProperty Name="Id_doctor" ColumnName="Id_doctor" />
+                <ScalarProperty Name="Id_status" ColumnName="Id_status" />
+                <ScalarProperty Name="Illness" ColumnName="Illness" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

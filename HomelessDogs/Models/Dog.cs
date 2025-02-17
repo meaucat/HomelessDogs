@@ -34,8 +34,8 @@ namespace HomelessDogs.Models
         public byte[] Photo { get; set; }
     
         public virtual Aviary Aviary { get; set; }
+        public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Survey> Survey { get; set; }
-        public virtual Gender Gender { get; set; }
     }
 }

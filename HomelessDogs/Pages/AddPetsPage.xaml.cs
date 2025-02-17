@@ -27,7 +27,7 @@ namespace HomelessDogs.Pages
         {
             InitializeComponent();
             AviariesLv.ItemsSource = App.db.Aviary.ToList();
-            GenderCB.ItemsSource = App.db.Gender.Select(g => g.Title).ToList();
+            GenderCB.ItemsSource = App.db.Gender.Select(g => g.Name).ToList();
             AviaryTypeCb.ItemsSource = App.db.AviaryType.ToList();
         }
 

@@ -86,12 +86,12 @@ namespace HomelessDogs.Pages
                 App.selectedEmployee.Patronymic = PatronymicTb.Text;
                 App.selectedEmployee.Login = LoginTb.Text;
                 App.selectedEmployee.Password = PasswordTb.Text;
+                App.db.SaveChanges();
+                MessageBox.Show("Данные изменены.");
+                NavigationService.Navigate(new EmployeePage());
             }
 
-            App.db.SaveChanges();
-
-            MessageBox.Show("Данные изменены.");
-            NavigationService.Navigate(new EmployeePage());
+            
         }
     }
 }

@@ -32,7 +32,7 @@ namespace HomelessDogs.Pages
             AgeTB.Text = App.selectedDog.AgeText;
             HeightTB.Text = $"{App.selectedDog.Height}см.";
             WeightTB.Text = $"{App.selectedDog.Weight}кг.";
-            GenderTB.Text = (App.selectedDog.Gender as Gender).Title;
+            GenderTB.Text = (App.selectedDog.Gender as Gender).Name;
             DescriptionTB.Text = App.selectedDog.Description;
         }
 

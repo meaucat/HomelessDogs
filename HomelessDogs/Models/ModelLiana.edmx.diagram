@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1635cbcd886d4c07a8476e30b504add8" Name="Diagram1">
+        <EntityTypeShape EntityType="HomelessDogsModel1.Aviary" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.AviaryType" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.Dog" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.Employee" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.Gender" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.Post" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.Status" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomelessDogsModel1.Survey" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Aviary_AviaryType" ManuallyRouted="false" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Dog_Aviary" ManuallyRouted="false" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Dog_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Survey_Dog" ManuallyRouted="false" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Employee_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Survey_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="HomelessDogsModel1.FK_Survey_Status" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

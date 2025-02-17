@@ -14,7 +14,8 @@ namespace HomelessDogs
     /// </summary>
     public partial class App : Application
     {
-        public static HomelessDogsEntities db = new HomelessDogsEntities();
+        //public static HomelessDogsEntities db = new HomelessDogsEntities();
+        public static HomelessDogsEntities1 db = new HomelessDogsEntities1();
         public static Employee employee;
         public static Aviary selectedAviary {  get; set; }
         public static Dog selectedDog { get; set; }
