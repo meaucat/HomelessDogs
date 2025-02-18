@@ -7,90 +7,87 @@
       mc:Ignorable="d" 
       d:DesignHeight="1047" d:DesignWidth="1047"
       Title="EditVisitPage">
-    <ScrollViewer VerticalScrollBarVisibility="Hidden">
-        <Grid>
-            <StackPanel Orientation="Vertical" Margin="50 50 0 0">
-                <TextBlock Text="Редактирование приема" FontSize="48" FontWeight="SemiBold"/>
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="50 50 0 0">
+            <TextBlock Text="Редактирование приема" FontSize="48" FontWeight="SemiBold"/>
 
-                <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
-                    <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
-                    <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="EditInformationBTN_Click" />
-                </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
+                <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться на главную" FontSize="16"  Margin="0 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
+                <Button x:Name="EditInformationBTN" Height="48" Width="300" Content="Сохранить информацию" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="EditInformationBTN_Click" />
+            </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Дата приема</TextBlock>
-                        <DatePicker Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                 Name="DateDP"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"></DatePicker>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" Margin="20 0 0 0">
-                        <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Статус приема</TextBlock>
-                        <ComboBox Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                  Name="StatusCB"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"></ComboBox>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Пациент</TextBlock>
-                        <TextBox Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"
-                                 Name="PacientTB"></TextBox>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" Margin="20 0 0 0"/>
-
-
-                </StackPanel>
-
-                <StackPanel Orientation="Vertical"
-                            Margin="0 20 0 0"
-                            HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="14"
-                                   Foreground="#FF939393">Диагноз</TextBlock>
-                    <TextBox Height="56"
-                                 Margin="0 10 0 0"
-                                 Width="195"
-                                 BorderBrush="Transparent"
-                                 Background="#FFF7F7F7"
-                             Name="DiagnosisTB"></TextBox>
+                           Foreground="#FF939393">Дата приема</TextBlock>
+                    <DatePicker Height="56"
+                         Margin="0 10 0 0"
+                         Width="195"
+                         Name="DateDP"
+                         BorderBrush="Transparent"
+                         Background="#FFF7F7F7"></DatePicker>
                 </StackPanel>
 
-
-
-                <TextBlock Margin="0 20 0 0"
-                       FontSize="32"
-                       FontWeight="DemiBold">Комментарии врача</TextBlock>
-
-                <StackPanel Orientation="Vertical"
-                            Margin="0 20 0 0"
-                            HorizontalAlignment="Left">
-                    <TextBlock Foreground="#939393">Добавьте комментарий</TextBlock>
-                    <TextBox BorderBrush="Transparent"
-                             Margin="0 10 0 0"
-                             Background="#FFF7F7F7"
-                             Width="690"
-                             Height="80"
-                             TextWrapping="Wrap"
-                             Name="CommentTb"></TextBox>
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                    <TextBlock FontSize="14"
+                           Foreground="#FF939393">Статус приема</TextBlock>
+                    <ComboBox Height="56"
+                         Margin="0 10 0 0"
+                         Width="195"
+                          Name="StatusCB"
+                         BorderBrush="Transparent"
+                         Background="#FFF7F7F7"></ComboBox>
                 </StackPanel>
             </StackPanel>
-        </Grid>
-    </ScrollViewer>
-    
+
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="14"
+                           Foreground="#FF939393">Пациент</TextBlock>
+                    <TextBox Height="56"
+                         Margin="0 10 0 0"
+                         Width="195"
+                         BorderBrush="Transparent"
+                         Background="#FFF7F7F7"
+                         Name="PacientTB"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0"/>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                    Margin="0 20 0 0"
+                    HorizontalAlignment="Left">
+                <TextBlock FontSize="14"
+                           Foreground="#FF939393">Диагноз</TextBlock>
+                <TextBox Height="56"
+                         Margin="0 10 0 0"
+                         Width="195"
+                         BorderBrush="Transparent"
+                         Background="#FFF7F7F7"
+                     Name="DiagnosisTB"></TextBox>
+            </StackPanel>
+
+
+
+            <TextBlock Margin="0 20 0 0"
+               FontSize="32"
+               FontWeight="DemiBold">Комментарии врача</TextBlock>
+
+            <StackPanel Orientation="Vertical"
+                    Margin="0 20 0 0"
+                    HorizontalAlignment="Left">
+                <TextBlock Foreground="#939393">Добавьте комментарий</TextBlock>
+                <TextBox BorderBrush="Transparent"
+                     Margin="0 10 0 0"
+                     Background="#FFF7F7F7"
+                     Width="690"
+                     Height="80"
+                     TextWrapping="Wrap"
+                     Name="CommentTb"></TextBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

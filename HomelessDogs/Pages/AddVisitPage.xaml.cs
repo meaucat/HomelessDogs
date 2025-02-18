@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomelessDogs.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace HomelessDogs.Pages
         public AddVisitPage()
         {
             InitializeComponent();
+
+            StatusCB.ItemsSource = App.db.Status.ToList();
+            PacientCB.ItemsSource = App.db.Dog.ToList();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
@@ -30,9 +34,30 @@ namespace HomelessDogs.Pages
 
         }
 
-        private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
+        private void AddInformationBTN_Click(object sender, RoutedEventArgs e)
         {
+            if (DiagnosisTB.Text == string.Empty || CommentTb.Text == string.Empty)
+            {
+                MessageBox.Show("Заполните все поля.");
+            }
+            else
+            {
+                Survey survey = new Survey()
+                {
+                    Id_doctor = App.employee.Id_employee,
+                    Id_dog = (PacientCB.SelectedItem as Dog).Id_dog,
+                    Id_status = (StatusCB.SelectedItem as Status).Id_status,
+                    Date = DateDP.SelectedDate,
+                    Illness = DiagnosisTB.Text,
+                    Comment = CommentTb.Text,
+                };
 
+                App.db.Survey.Add(survey);
+                App.db.SaveChanges();
+
+                MessageBox.Show("Прием проведен.");
+                NavigationService.Navigate(new VeterinarMainPage());
+            }
         }
     }
 }
