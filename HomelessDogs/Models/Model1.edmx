@@ -212,6 +212,7 @@
           <EntitySet Name="AviaryType" EntityType="HomelessDogsModel.AviaryType" />
           <EntitySet Name="Dog" EntityType="HomelessDogsModel.Dog" />
           <EntitySet Name="Employee" EntityType="HomelessDogsModel.Employee" />
+          <EntitySet Name="Gender" EntityType="HomelessDogsModel.Gender" />
           <EntitySet Name="Post" EntityType="HomelessDogsModel.Post" />
           <EntitySet Name="Status" EntityType="HomelessDogsModel.Status" />
           <EntitySet Name="Survey" EntityType="HomelessDogsModel.Survey" />
@@ -221,6 +222,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Dog_Aviary" Association="HomelessDogsModel.FK_Dog_Aviary">
             <End Role="Aviary" EntitySet="Aviary" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dog_Gender" Association="HomelessDogsModel.FK_Dog_Gender">
+            <End Role="Gender" EntitySet="Gender" />
             <End Role="Dog" EntitySet="Dog" />
           </AssociationSet>
           <AssociationSet Name="FK_Survey_Dog" Association="HomelessDogsModel.FK_Survey_Dog">
@@ -238,11 +243,6 @@
           <AssociationSet Name="FK_Survey_Status" Association="HomelessDogsModel.FK_Survey_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="Survey" EntitySet="Survey" />
-          </AssociationSet>
-          <EntitySet Name="Gender" EntityType="HomelessDogsModel.Gender" />
-          <AssociationSet Name="FK_Dog_Gender" Association="HomelessDogsModel.FK_Dog_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Dog" EntitySet="Dog" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Aviary">
@@ -279,8 +279,8 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Aviary" Relationship="HomelessDogsModel.FK_Dog_Aviary" FromRole="Dog" ToRole="Aviary" />
-          <NavigationProperty Name="Survey" Relationship="HomelessDogsModel.FK_Survey_Dog" FromRole="Dog" ToRole="Survey" />
           <NavigationProperty Name="Gender" Relationship="HomelessDogsModel.FK_Dog_Gender" FromRole="Dog" ToRole="Gender" />
+          <NavigationProperty Name="Survey" Relationship="HomelessDogsModel.FK_Survey_Dog" FromRole="Dog" ToRole="Survey" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -295,6 +295,14 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Post" Relationship="HomelessDogsModel.FK_Employee_Post" FromRole="Employee" ToRole="Post" />
           <NavigationProperty Name="Survey" Relationship="HomelessDogsModel.FK_Survey_Employee" FromRole="Employee" ToRole="Survey" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_gender" />
+          </Key>
+          <Property Name="Id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dog" Relationship="HomelessDogsModel.FK_Dog_Gender" FromRole="Gender" ToRole="Dog" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -351,6 +359,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Dog_Gender">
+          <End Type="HomelessDogsModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="HomelessDogsModel.Dog" Role="Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_gender" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="Id_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Survey_Dog">
           <End Type="HomelessDogsModel.Dog" Role="Dog" Multiplicity="0..1" />
           <End Type="HomelessDogsModel.Survey" Role="Survey" Multiplicity="*" />
@@ -396,26 +416,6 @@
             </Principal>
             <Dependent Role="Survey">
               <PropertyRef Name="Id_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="Id_gender" />
-          </Key>
-          <Property Name="Id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Dog" Relationship="HomelessDogsModel.FK_Dog_Gender" FromRole="Gender" ToRole="Dog" />
-        </EntityType>
-        <Association Name="FK_Dog_Gender">
-          <End Type="HomelessDogsModel.Gender" Role="Gender" Multiplicity="0..1" />
-          <End Type="HomelessDogsModel.Dog" Role="Dog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="Id_gender" />
-            </Principal>
-            <Dependent Role="Dog">
-              <PropertyRef Name="Id_gender" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -472,6 +472,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="HomelessDogsModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="HomelessDogsModel.Post">
               <MappingFragment StoreEntitySet="Post">
@@ -498,14 +506,6 @@
                 <ScalarProperty Name="Id_doctor" ColumnName="Id_doctor" />
                 <ScalarProperty Name="Id_dog" ColumnName="Id_dog" />
                 <ScalarProperty Name="Id_survey" ColumnName="Id_survey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="HomelessDogsModel.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id_gender" ColumnName="Id_gender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

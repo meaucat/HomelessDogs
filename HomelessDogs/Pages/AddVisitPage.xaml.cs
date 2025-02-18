@@ -27,16 +27,17 @@ namespace HomelessDogs.Pages
 
             StatusCB.ItemsSource = App.db.Status.ToList();
             PacientCB.ItemsSource = App.db.Dog.ToList();
+            VeterinarCB.ItemsSource = App.db.Employee.Where(x=>x.Id_post == 2).ToList();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AdminListVisitsPage());
         }
 
         private void AddInformationBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (DiagnosisTB.Text == string.Empty || CommentTb.Text == string.Empty)
+            if (DiagnosisTB.Text == string.Empty || CommentTb.Text == string.Empty || VeterinarCB.SelectedItem == null || DateDP.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все поля.");
             }
@@ -44,7 +45,7 @@ namespace HomelessDogs.Pages
             {
                 Survey survey = new Survey()
                 {
-                    Id_doctor = App.employee.Id_employee,
+                    Id_doctor = (VeterinarCB.SelectedItem as Employee).Id_employee,
                     Id_dog = (PacientCB.SelectedItem as Dog).Id_dog,
                     Id_status = (StatusCB.SelectedItem as Status).Id_status,
                     Date = DateDP.SelectedDate,
@@ -55,8 +56,8 @@ namespace HomelessDogs.Pages
                 App.db.Survey.Add(survey);
                 App.db.SaveChanges();
 
-                MessageBox.Show("Прием проведен.");
-                NavigationService.Navigate(new VeterinarMainPage());
+                MessageBox.Show("Прием добавлен.");
+                NavigationService.Navigate(new AdminListVisitsPage());
             }
         }
     }

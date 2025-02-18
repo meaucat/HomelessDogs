@@ -31,12 +31,19 @@ namespace HomelessDogs.Pages
         private void VisitsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.selectedSurvey = VisitsLV.SelectedItem as Survey;
-            NavigationService.Navigate(new VisitsPage());
+            NavigationService.Navigate(new EditVisitPage());
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new AddVisitPage());
+
+        }
+
+        private void BackBTN_Click_1(object sender, RoutedEventArgs e)
+        {
             NavigationService.Navigate(new MainAdminPage());
+
         }
     }
 }

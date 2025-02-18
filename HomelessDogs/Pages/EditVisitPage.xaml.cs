@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,19 +30,19 @@ namespace HomelessDogs.Pages
             StatusCB.ItemsSource = App.db.Status.Select(x => x.Name).ToList();
             CommentTb.Text = App.selectedSurvey.Comment;
             DateDP.SelectedDate = App.selectedSurvey.Date;
-            StatusCB.SelectedIndex = App.selectedSurvey.Status.Id_status - 1;
             PacientTB.Text = App.selectedSurvey.Dog.SerialNumber;
+            StatusCB.SelectedIndex = App.selectedSurvey.Status.Id_status - 1;
             DiagnosisTB.Text = App.selectedSurvey.Illness;
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new VisitsPage());
+            NavigationService.Navigate(new AdminListVisitsPage());
         }
 
         private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (DiagnosisTB.Text == string.Empty || CommentTb.Text == string.Empty)
+            if (DiagnosisTB.Text == string.Empty || CommentTb.Text == string.Empty || DateDP.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все поля.");
             }
@@ -52,15 +53,14 @@ namespace HomelessDogs.Pages
             }
             else
             {
-                App.selectedSurvey.Id_status = (StatusCB.SelectedItem as Status).Id_status;
+                App.selectedSurvey.Id_status = StatusCB.SelectedIndex + 1;
                 App.selectedSurvey.Date = DateDP.SelectedDate;
                 App.selectedSurvey.Illness = DiagnosisTB.Text;
                 App.selectedSurvey.Comment = CommentTb.Text;
-
                 App.db.SaveChanges();
 
                 MessageBox.Show("Данные изменены.");
-                NavigationService.Navigate(new VeterinarMainPage());
+                NavigationService.Navigate(new AdminListVisitsPage());
             }
         }
     }

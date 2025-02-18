@@ -52,7 +52,7 @@
 
                             <StackPanel Orientation="Horizontal"
                                     Margin="20 10 0 0">
-                                <TextBlock Text="{Binding Date}"
+                                <TextBlock Text="{Binding Date, StringFormat=' {0:dd.MM.yyyy HH:mm}'}"
                                    FontSize="32"
                                    FontWeight="DemiBold"></TextBlock>
                             </StackPanel>

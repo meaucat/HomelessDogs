@@ -29,9 +29,9 @@ namespace HomelessDogs.Models
         public virtual DbSet<AviaryType> AviaryType { get; set; }
         public virtual DbSet<Dog> Dog { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Survey> Survey { get; set; }
-        public virtual DbSet<Gender> Gender { get; set; }
     }
 }

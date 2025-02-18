@@ -27,8 +27,9 @@
                 <TextBlock x:Name="CountTb"  FontSize="20" Margin="0 20 0 0" />
                 <TextBlock Text="Список приемов:" FontSize="32" FontWeight="SemiBold" Margin="0 30 0 0"/>
             </StackPanel>
+            <Button x:Name="AddBTN" Height="48" Width="223" Content="Добавить прием" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 300 0" BorderBrush="Transparent" Click="BackBTN_Click"/>
 
-            <Button x:Name="BackBTN" Height="48" Width="223" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click"/>
+            <Button x:Name="BackBTN" Height="48" Width="223" Content="Назад" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 50 50 0" BorderBrush="Transparent" Click="BackBTN_Click_1"/>
 
             <ListView
         x:Name="VisitsLV"
@@ -53,7 +54,7 @@
 
                             <StackPanel Orientation="Horizontal"
                             Margin="20 10 0 0">
-                                <TextBlock Text="{Binding Date}"
+                                <TextBlock Text="{Binding Date, StringFormat=' {0:dd.MM.yyyy HH:mm}'}"
                            FontSize="32"
                            FontWeight="DemiBold"></TextBlock>
                             </StackPanel>

@@ -32,13 +32,18 @@ namespace HomelessDogs.Pages
             AgeTB.Text = App.selectedDog.AgeText;
             HeightTB.Text = $"{App.selectedDog.Height}см.";
             WeightTB.Text = $"{App.selectedDog.Weight}кг.";
-            GenderTB.Text = (App.selectedDog.Gender as Gender).Name;
+            GenderTB.Text = (App.selectedDog.Gender as Gender).Title;
             DescriptionTB.Text = App.selectedDog.Description;
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
                 NavigationService.Navigate(new MainGuestPage(new Employee()));
+        }
+
+        private void CallBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Номер приюта: 8(800)-555-35-35😼");
         }
     }
 }

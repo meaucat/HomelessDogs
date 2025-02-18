@@ -139,19 +139,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Aviary.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AviaryType.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dog.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gender.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -186,13 +186,13 @@
     <Compile Include="Models\Partials\Dog.cs" />
     <Compile Include="Models\Partials\Employee.cs" />
     <Compile Include="Models\Post.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Status.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Survey.cs">
-      <DependentUpon>ModelLiana.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddEmployeePage.xaml.cs">
       <DependentUpon>AddEmployeePage.xaml</DependentUpon>

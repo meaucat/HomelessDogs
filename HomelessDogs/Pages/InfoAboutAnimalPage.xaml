@@ -14,7 +14,7 @@
             <TextBlock Text="Страница питомца" FontSize="48" FontWeight="SemiBold"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 25 0 25">
-                <Button x:Name="CallBTN" Height="48" Width="300" Content="Позвонить в приют" FontSize="16" BorderBrush="Transparent" Background="#FFF7F7F7" />
+                <Button x:Name="CallBTN" Height="48" Width="300" Content="Позвонить в приют" FontSize="16" BorderBrush="Transparent" Background="#FFF7F7F7" Click="CallBTN_Click" />
                 <Button x:Name="BackBTN" Height="48" Width="249" Content="Вернуться назад" FontSize="16"  Margin="20 0 0 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="BackBTN_Click"/>
             </StackPanel>
 

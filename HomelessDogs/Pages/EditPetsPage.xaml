@@ -108,7 +108,8 @@ FontSize="18"
             </StackPanel>
             <Button x:Name="EditPhotoBtn" Height="48" Width="235" Content="Редактировать фото" FontSize="16" Margin="0 10 739 0" BorderBrush="Transparent" Background="#FFF7F7F7" Click="EditPhotoBtn_Click"/>
             <TextBlock Text="Описание питомца" FontWeight="DemiBold" FontSize="32" Margin="0 70 0 0"/>
-            <TextBlock x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="0 25 0 0" FontSize="16"  Width="653" TextWrapping="WrapWithOverflow"/>
+            <TextBox x:Name="DescriptionTB" HorizontalAlignment="Left" Margin="0 25 0 0" FontSize="16"  Width="653" TextWrapping="Wrap"
+                     Height="150"/>
         </StackPanel>
 
     </Grid>

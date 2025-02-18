@@ -38,9 +38,9 @@ namespace HomelessDogs.Pages
             StatusCB.IsChecked = App.selectedDog.IsGive;
             DieCB.IsChecked = App.selectedDog.IsDie;
             GenderCB.ItemsSource = App.db.Gender.ToList();
-            GenderCB.SelectedIndex = (int)App.selectedDog.Id_gender;
+            GenderCB.SelectedItem = App.selectedDog.Gender;
             PetImg.Source = ToImage(App.selectedDog.Photo);
-            AviariesLv.SelectedIndex = (int)App.selectedDog.Id_aviary;
+            AviariesLv.SelectedItem = App.selectedDog.Aviary;
         }
 
         public BitmapImage ToImage(byte[] bytes)
@@ -106,12 +106,13 @@ namespace HomelessDogs.Pages
 
         private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
         {
-            var fieldsToCheck = new[] { NameTB.Text, AgeTB.Text, HeightTB.Text, WeightTB.Text, DescriptionTB.Text, };
+            var fieldsToCheck = new[] { NameTB.Text, AgeTB.Text, HeightTB.Text, WeightTB.Text, DescriptionTB.Text };
             if (fieldsToCheck.Any(string.IsNullOrWhiteSpace) || GenderCB.SelectedItem == null)
             {
                 MessageBox.Show("Заполните все поля.");
             }
-            else if (NameTB.Text == App.selectedDog.SerialNumber && AgeTB.Text == App.selectedDog.Age.ToString() && HeightTB.Text == App.selectedDog.Height.ToString() &&  WeightTB.Text == App.selectedDog.Weight.ToString() && DescriptionTB.Text == App.selectedDog.Description)
+            else if (NameTB.Text == App.selectedDog.SerialNumber && AgeTB.Text == App.selectedDog.Age.ToString() && HeightTB.Text == App.selectedDog.Height.ToString() && WeightTB.Text == App.selectedDog.Weight.ToString() && DescriptionTB.Text == App.selectedDog.Description && StatusCB.IsChecked == App.selectedDog.IsGive && App.selectedDog.IsDie
+                == DieCB.IsChecked && AviariesLv.SelectedIndex == App.selectedDog.Id_aviary)
             {
                 MessageBox.Show("Изменений не происходило.");
                 return;
@@ -126,7 +127,7 @@ namespace HomelessDogs.Pages
                 App.selectedDog.IsDie = DieCB.IsChecked;
                 App.selectedDog.IsGive = StatusCB.IsChecked;
                 App.selectedDog.Id_gender = GenderCB.SelectedIndex + 1;
-                App.selectedDog.Id_aviary = AviariesLv.SelectedIndex + 1;
+                App.selectedDog.Id_aviary = (AviariesLv.SelectedItem as Aviary).Id_aviary;
 
                 App.db.SaveChanges();
 

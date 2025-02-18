@@ -29,6 +29,7 @@
                                 VerticalContentAlignment="Center"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
+                              MaxLength="50"
                                  x:Name="SurnameTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
 
@@ -39,6 +40,7 @@
                                  Margin="0 10 0 0"
                                  Width="195"
                              FontSize="20"
+                              MaxLength="50"
                                 VerticalContentAlignment="Center"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
@@ -55,6 +57,7 @@
                                 VerticalContentAlignment="Center"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
+                              MaxLength="50"
                                  x:Name="PatronymicTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
 
@@ -71,6 +74,7 @@
                                 VerticalContentAlignment="Center"
                                  BorderBrush="Transparent"
                                  Background="#FFF7F7F7"
+                              MaxLength="20"
                                  x:Name="LoginTb" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
                 </StackPanel>
 
@@ -80,6 +84,7 @@
                     <TextBox Height="56"
                                  Margin="0 10 0 0"
                                  Width="195"
+                              MaxLength="20"
                              FontSize="20"
                                 VerticalContentAlignment="Center"
                                  BorderBrush="Transparent"

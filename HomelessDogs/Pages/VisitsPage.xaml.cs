@@ -29,33 +29,13 @@ namespace HomelessDogs.Pages
             PacientTB.Text = App.selectedSurvey.Dog.SerialNumber;
             DiagnosisTB.Text = App.selectedSurvey.Illness.ToString();
             DoctorTB.Text = App.selectedSurvey.Employee.Name;
-
-            if (App.employee.Id_post != 1)
-            {
-                EditInformationBTN.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                EditInformationBTN.Visibility = Visibility.Hidden;
-            }
         }
 
-        private void EditInformationBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new EditVisitPage());
-        }
+
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (App.employee.Id_post == 1)
-            {
-                NavigationService.Navigate(new AdminListVisitsPage());
-            }
-            else
-            {
-                NavigationService.Navigate(new VeterinarMainPage());
-
-            }
+            NavigationService.Navigate(new VeterinarMainPage());
         }
     }
 }

@@ -32,7 +32,7 @@ namespace HomelessDogs.Pages
             PlannedVisitsLV.ItemsSource = App.db.Survey.Where(x => x.Date >= now && x.Id_doctor == App.employee.Id_employee).ToList();
             PreviousVisitsLV.ItemsSource = App.db.Survey.Where(x => x.Date < now && x.Id_doctor == App.employee.Id_employee).ToList();
 
-            int count = App.db.Survey.Where(x => x.Date == now).ToList().Count;
+            int count = App.db.Survey.Where(x => x.Date == now && x.Id_doctor == App.employee.Id_employee).ToList().Count;
 
             CountTb.Text = $"Приемов на сегодня: {count}. Хорошего Вам дня!";
         }
